@@ -6,7 +6,7 @@ global $conn;
 $servername = "localhost";
 $username   = "root";
 $password   = "";
-$dbname     = "it_inv";
+$dbname     = "rlp";
 
 // Create connection
 $conn       = new mysqli($servername, $username, $password, $dbname);
