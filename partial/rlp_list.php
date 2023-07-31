@@ -13,7 +13,7 @@ if (isset($rlpListData) && !empty($rlpListData)) {
                     <th>Created By</th>
                     <th>Project</th>
                     <th>Status</th>
-                    <th>Action</th>
+                    <th width="25%">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -103,7 +103,7 @@ if (isset($rlpListData) && !empty($rlpListData)) {
 
                             <?php if(hasAccessPermission($user_id_session, 'crlp', 'edit_access')){ ?>
                             <a title="Print RLP" class="btn btn-sm btn-info bg-blue" href="rlp_print.php?rlp_id=<?php echo $adata->id; ?>">
-                                <span class="fa fa-print"></span>
+                                <span class="fa fa-print"> Print</span>
                             </a>
                             <?php } ?>                          
                         </td>

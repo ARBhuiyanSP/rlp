@@ -34,7 +34,8 @@ function create_user(){
     $department_id  = (isset($_POST['department_id']) && !empty($_POST['department_id']) ? mysqli_real_escape_string($conn,$_POST['department_id']) : 'NULL');
     $project_id  = (isset($_POST['project_id']) && !empty($_POST['project_id']) ? mysqli_real_escape_string($conn,$_POST['project_id']) : 'NULL');
     $office_id      = (isset($_POST['office_id']) && !empty($_POST['office_id']) ? mysqli_real_escape_string($conn,$_POST['office_id']) : 'NULL');
-    $email          = (isset($_POST['email']) && !empty($_POST['email']) ? mysqli_real_escape_string($conn,$_POST['email']) : '');
+    $email   = (isset($_POST['email']) && !empty($_POST['email']) ? mysqli_real_escape_string($conn,$_POST['email']) : '');
+    $contact_number  = (isset($_POST['contact_number']) && !empty($_POST['contact_number']) ? mysqli_real_escape_string($conn,$_POST['contact_number']) : '');
     $name           = (isset($_POST['name']) && !empty($_POST['name']) ? mysqli_real_escape_string($conn,$_POST['name']) : '');
     $designation    = (isset($_POST['designation']) && !empty($_POST['designation']) ? mysqli_real_escape_string($conn,$_POST['designation']) : '');
     $password       = (isset($_POST['password']) && !empty($_POST['password']) ? md5($_POST['password']) : md5('123456'));
@@ -48,6 +49,7 @@ function create_user(){
         'designation'   =>  $designation,
         'name'          =>  $name,
         'email'         =>  $email,
+        'contact_number'         =>  $contact_number,
         'password'      =>  $password,
         'created_at'    =>  date('Y-m-d h:i:s'),
     ];
@@ -61,7 +63,8 @@ function update_user(){
     $department_id  = (isset($_POST['department_id']) && !empty($_POST['department_id']) ? mysqli_real_escape_string($conn,$_POST['department_id']) : 'NULL');
     $project_id  = (isset($_POST['project_id']) && !empty($_POST['project_id']) ? mysqli_real_escape_string($conn,$_POST['project_id']) : 'NULL');
     $office_id      = (isset($_POST['office_id']) && !empty($_POST['office_id']) ? mysqli_real_escape_string($conn,$_POST['office_id']) : 'NULL');
-    $email          = (isset($_POST['email']) && !empty($_POST['email']) ? mysqli_real_escape_string($conn,$_POST['email']) : '');
+    $email    = (isset($_POST['email']) && !empty($_POST['email']) ? mysqli_real_escape_string($conn,$_POST['email']) : '');
+    $contact_number   = (isset($_POST['contact_number']) && !empty($_POST['contact_number']) ? mysqli_real_escape_string($conn,$_POST['contact_number']) : '');
     $name           = (isset($_POST['name']) && !empty($_POST['name']) ? mysqli_real_escape_string($conn,$_POST['name']) : '');
     $designation    = (isset($_POST['designation']) && !empty($_POST['designation']) ? mysqli_real_escape_string($conn,$_POST['designation']) : '');
 	
@@ -90,6 +93,7 @@ function update_user(){
         'designation'   	=>  $designation,
         'name'          	=>  $name,
         'email'         	=>  $email,
+        'contact_number'             =>  $contact_number,
         'signature_image'	=>  $signature_image,
         'updated_at'    	=>  date('Y-m-d h:i:s'),
         'updated_by'    	=>  $_SESSION['logged']['user_id'],

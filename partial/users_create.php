@@ -188,10 +188,18 @@ foreach ($datas as $data) {
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputMobile1">Mobile</label>
+                    <input type="text" class="form-control" id="mobile" placeholder="Enter mobile no" name="contact_number">
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Password</label>

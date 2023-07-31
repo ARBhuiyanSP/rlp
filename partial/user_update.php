@@ -204,15 +204,22 @@ $userData = getUserDataByid($id);
                     </select>
                 </div>
             </div>
-        
-        </div>
-        
-       
-        <div class="form-group">
-            <label for="exampleInputEmail1">Email</label>
-            <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" value="<?php if (isset($userData->email) && !empty($userData->email)) {
-    echo $userData->email;
-} ?>">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" value="<?php if (isset($userData->email) && !empty($userData->email)) {
+            echo $userData->email;
+        } ?>">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="exampleInputMobile1">Mobile</label>
+                    <input type="text" class="form-control" id="mobile" placeholder="Enter mobile no" name="contact_number" value="<?php if (isset($userData->contact_number) && !empty($userData->contact_number)) {
+            echo $userData->contact_number;
+        } ?>">
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Password</label>
