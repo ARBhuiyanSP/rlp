@@ -63,21 +63,21 @@ if (isset($NotesheetListData) && !empty($NotesheetListData)) {
                             </div>
                         </td>
                         <td>
-                            <?php if (!is_super_admin($user_id_session)) {?>
+                            <?php //if (!is_super_admin($user_id_session)) {?>
 							
-							<?php if(hasAccessPermission($user_id_session, 'crlp', 'edit_access') && get_status_name($adata->notesheet_status)!='Approve'){ ?>
+							<?php //if(hasAccessPermission($user_id_session, 'crlp', 'edit_access') && get_status_name($adata->notesheet_status)!='Approve'){ ?>
                             <a title="Edit RLP" class="btn btn-sm btn-info" href="notesheet_update.php?id=<?php echo $adata->id; ?>">
-                                <span class="fa fa-pencil"> Approval</span>
+                                <span class="fa fa-pencil"> Details</span>
                             </a>
-                            <?php } }?>
+                            <?php //} }?>
 							
 							
 							
-							<!-- <?php if(hasAccessPermission($user_id_session, 'crlp', 'edit_access') && get_status_name($adata->notesheet_status)!='Approve'){ ?>
+							<!--<?php if(check_permission('notesheet-approve') && get_status_name($adata->notesheet_status)!='Approve'){ ?>
                             <a title="Delete RLP" class="btn btn-sm btn-success" href="javascript:void(0)" onclick="commonApproveOperation('<?php echo $approve_url ?>', '<?php echo $adata->id ?>', '<?php echo $_SESSION['logged']['user_id'] ?>');">
                                 <span class="fa fa-close"> Approve</span>
                             </a>
-                            <?php } ?> --->
+                            <?php } ?> -->
 							
                             <!---  <?php if(hasAccessPermission($user_id_session, 'crlp', 'delete_access')){ ?>
                             <a title="Delete RLP" class="btn btn-sm btn-danger" href="javascript:void(0)" onclick="commonDeleteOperation('<?php echo $delUrl ?>', '<?php echo $adata->id ?>');">
@@ -93,11 +93,11 @@ if (isset($NotesheetListData) && !empty($NotesheetListData)) {
                             </a>
                             <?php } ?>    ---> 
 
-							<?php if(hasAccessPermission($user_id_session, 'crlp', 'edit_access')){ ?>
+							<?php //if(hasAccessPermission($user_id_session, 'crlp', 'edit_access')){ ?>
                             <a title="Print RLP" class="btn btn-sm btn-info bg-blue" href="notesheets_view.php?id=<?php echo $adata->id; ?>">
-                                <span class="fa fa-print"> Details/Print</span>
+                                <span class="fa fa-print"> Print</span>
                             </a>
-                            <?php } ?>	
+                            <?php //} ?>	
 
 							<?php if(hasAccessPermission($user_id_session, 'crlp', 'delete_access') && get_status_name($adata->notesheet_status)=='Approve' && $adata->is_wo==0){ ?>
                             <a title="Edit RLP" class="btn btn-sm btn-success" href="create_workorder.php?id=<?php echo $adata->id; ?>">
