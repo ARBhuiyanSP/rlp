@@ -30,6 +30,7 @@ if (isset($_POST['user_create']) && !empty($_POST['user_create'])){
 function create_user(){
     global $conn;
     $role_id        = (isset($_POST['group_id']) && !empty($_POST['group_id']) ? mysqli_real_escape_string($conn,$_POST['group_id']) : '');
+    $type        = (isset($_POST['type']) && !empty($_POST['type']) ? mysqli_real_escape_string($conn,$_POST['type']) : '');
     $branch_id      = (isset($_POST['branch_id']) && !empty($_POST['branch_id']) ? mysqli_real_escape_string($conn,$_POST['branch_id']) : 'NULL');
     $department_id  = (isset($_POST['department_id']) && !empty($_POST['department_id']) ? mysqli_real_escape_string($conn,$_POST['department_id']) : 'NULL');
     $project_id  = (isset($_POST['project_id']) && !empty($_POST['project_id']) ? mysqli_real_escape_string($conn,$_POST['project_id']) : 'NULL');
@@ -45,6 +46,7 @@ function create_user(){
         'project_id' =>  $project_id,
         'office_id'     =>  $office_id,
         'role_id'       =>  $role_id,
+        'type'       =>  $type,
         'role_name'     =>  getRoleShortNameByRoleId($role_id),
         'designation'   =>  $designation,
         'name'          =>  $name,
@@ -59,6 +61,7 @@ function create_user(){
 function update_user(){
     global $conn;
     $role_id        = (isset($_POST['group_id']) && !empty($_POST['group_id']) ? mysqli_real_escape_string($conn,$_POST['group_id']) : '');
+    $type        = (isset($_POST['type']) && !empty($_POST['type']) ? mysqli_real_escape_string($conn,$_POST['type']) : '');
     $branch_id      = (isset($_POST['branch_id']) && !empty($_POST['branch_id']) ? mysqli_real_escape_string($conn,$_POST['branch_id']) : 'NULL');
     $department_id  = (isset($_POST['department_id']) && !empty($_POST['department_id']) ? mysqli_real_escape_string($conn,$_POST['department_id']) : 'NULL');
     $project_id  = (isset($_POST['project_id']) && !empty($_POST['project_id']) ? mysqli_real_escape_string($conn,$_POST['project_id']) : 'NULL');
@@ -89,6 +92,7 @@ function update_user(){
         'project_id' 		=>  $project_id,
         'office_id'     	=>  $office_id,
         'role_id'       	=>  $role_id,
+        'type'       	=>  $type,
         'role_name'     	=>  getRoleShortNameByRoleId($role_id),
         'designation'   	=>  $designation,
         'name'          	=>  $name,

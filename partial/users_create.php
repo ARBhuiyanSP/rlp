@@ -194,10 +194,27 @@ foreach ($datas as $data) {
                     <input type="text" class="form-control" id="email" placeholder="Enter email" name="email">
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <div class="form-group">
                     <label for="exampleInputMobile1">Mobile</label>
                     <input type="text" class="form-control" id="mobile" placeholder="Enter mobile no" name="contact_number">
+                </div>
+            </div>
+			<div class="col-md-3">
+                <div class="form-group">
+                    <label for="sel1">Type:</label>
+                    <select class="form-control select2" id="type" name="type">
+                        <option value="">Please select</option>
+						<?php
+						$table = "roles_group";
+						$order = "ASC";
+						$column = "name";
+						$datas = getTableDataByTableName($table, $order, $column);
+						foreach ($datas as $data) {
+							?>
+						<option value="<?php echo $data->id; ?>"><?php echo $data->name; ?></option>
+						<?php } ?>
+                    </select>
                 </div>
             </div>
         </div>
