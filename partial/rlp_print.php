@@ -83,19 +83,24 @@
     </div>
     <!-- /.row -->
 	<div class="row">
-		<div class="col-sm-3 col-xs-3"></div>
-		
-		<div class="col-sm-3 col-xs-3"><img src="images/signatures/<?php echo getSignatureByUserId($rlp_info->rlp_user_id); ?>" height="70px"/></br></br><span style="border-top: double;">Prepared by </span></div>
-		
-		
-		
-		<div class="col-sm-3 col-xs-3"><img src="<?php if(get_status_name($rlp_info->rlp_status)=='Approve'){echo 'images/signatures/1669634002img-removebg-preview.png';}else{ echo 'images/signatures/not_approve.png';}?>" height="70px"/></br></br><span style="border-top: double;"> Approved By</span></div>
-		
-		
-		
-		<div class="col-sm-3 col-xs-3"></div>
-		
-	</div>
+					<?php
+					$table = "rlp_acknowledgement WHERE rlp_info_id=$rlp_id";
+					$order = 'DESC';
+					$column = 'ack_request_date';
+					$allRemarksHistory = getTableDataByTableName($table, $order, $column);
+						if (isset($allRemarksHistory) && !empty($allRemarksHistory)) {
+						foreach ($allRemarksHistory as $dat) {
+					?>
+					
+					<?php //echo (isset($dat->ack_updated_date) && !empty($dat->ack_updated_date) ? human_format_date($dat->ack_updated_date) : ""); ?>
+					<div class="col-sm-3 col-xs-3" style="padding-top:100px;">
+						<center><?php if(get_status_name($dat->ack_status)=='Approve' || get_status_name($dat->ack_status)=='Recommended'){ ?><img src="images/signatures/<?php echo getSignatureByUserId($dat->user_id); ?>" height="70px"/><?php } ?></br><?php echo getUserNameByUserId($dat->user_id) ?></br>________________________</br><?php echo getDesignationByUserId($dat->user_id) ?></center>
+					</div>
+					<?php
+					}
+				}
+				?>			
+			</div>
     <!-- /.row -->
 	
 </section>
