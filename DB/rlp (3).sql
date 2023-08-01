@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2023 at 01:47 PM
+-- Generation Time: Aug 01, 2023 at 01:41 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -10689,6 +10689,13 @@ CREATE TABLE `notesheets` (
   `created_by` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `notesheets`
+--
+
+INSERT INTO `notesheets` (`id`, `notesheet_no`, `notesheet_id`, `rlp_no`, `subject`, `supplier_name`, `address`, `concern_person`, `cell_number`, `email`, `item`, `part_no`, `unit`, `quantity`, `unit_price`, `total`, `remarks`, `status`, `created_at`, `created_by`) VALUES
+(132, 'NS-2023-08-ENG-Man-001', 45, 'RLP-ENG-HEA-2023-07-001', 'test', 'test supplier', 'dhaka', 'atiq', '123456', 'ati!sdfsd.dfs', 'test', '', 'Pics', '3', '2000', '6000.00', 'ok', 'Created', '2023-08-01 02:57:44', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -10728,6 +10735,13 @@ CREATE TABLE `notesheets_master` (
   `is_delete` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `notesheets_master`
+--
+
+INSERT INTO `notesheets_master` (`id`, `notesheet_no`, `rlp_no`, `request_project`, `subject`, `ns_info`, `supplier_name`, `address`, `concern_person`, `cell_number`, `email`, `no_of_item`, `sub_total`, `ait`, `vat`, `discount`, `total_afterdiscount`, `grand_total`, `remarks`, `terms_condition`, `status`, `notesheet_status`, `is_viewd`, `is_wo`, `attached_file`, `created_at`, `created_by`, `updated_at`, `updated_by`, `is_delete`) VALUES
+(45, 'NS-2023-08-ENG-Man-001', 'RLP-ENG-HEA-2023-07-001', 21, 'test', 'RLP-ENG-HEA-2023-07-001', 'test supplier', 'dhaka', 'atiq', '123456', 'ati!sdfsd.dfs', 0, 6000, 450, 180, 0, 6000, 6630, '', '<ul>\r\n\r\n							<li>Date of Commencement</li>\r\n\r\n							<li>Delivery of Goods: Within 03(Three) days after receiving the work order.</li>\r\n\r\n							<li>Mode of payment: After 45 days from the date of bill Submission.</li>\r\n\r\n							<li>The above rate includes VAT, AIT &amp; other Taxes.</li>\r\n\r\n							<li>Transport &amp; Courier costs will be charged by Buyers.</li>\r\n\r\n						</ul>\r\n', 'Created', 1, 0, 0, '', '2023-08-01 02:57:44', 1, '2023-01-08 15:09:34', '0000-00-00 00:00:00', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -10753,7 +10767,7 @@ CREATE TABLE `notesheet_access_chain` (
 --
 
 INSERT INTO `notesheet_access_chain` (`id`, `chain_type`, `division_id`, `department_id`, `project_id`, `notesheet_type`, `users`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
-(23, 'default', 1, 11, 21, 0, '{\"3360\":\"1\",\"3361\":\"2\",\"3359\":\"3\",\"616\":\"4\"}', 1, '2022-11-28 10:49:22', NULL, NULL);
+(24, 'default', 16, 131, 21, 0, '{\"3374\":\"1\",\"3373\":\"2\",\"3372\":\"3\"}', 1, '2023-08-01 02:21:32', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -10774,6 +10788,15 @@ CREATE TABLE `notesheet_acknowledgement` (
   `updated_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
+--
+-- Dumping data for table `notesheet_acknowledgement`
+--
+
+INSERT INTO `notesheet_acknowledgement` (`id`, `notesheet_id`, `user_id`, `ack_order`, `ack_status`, `ack_request_date`, `ack_updated_date`, `is_visible`, `created_by`, `updated_by`) VALUES
+(478, 45, 3374, 1, 6, '2023-08-01 14:57:45', '2023-08-01 15:03:45', 1, 1, 3374),
+(479, 45, 3373, 2, 6, '2023-08-01 15:03:45', '2023-08-01 15:04:18', 1, 1, 3373),
+(480, 45, 3372, 3, 1, '2023-08-01 15:04:18', '2023-08-01 15:09:34', 1, 1, 3372);
+
 -- --------------------------------------------------------
 
 --
@@ -10787,6 +10810,15 @@ CREATE TABLE `notesheet_remarks_history` (
   `remarks` longtext NOT NULL,
   `remarks_date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `notesheet_remarks_history`
+--
+
+INSERT INTO `notesheet_remarks_history` (`id`, `notesheet_id`, `user_id`, `remarks`, `remarks_date`) VALUES
+(146, 45, 3374, 'Recommended', '2023-08-01 15:03:45'),
+(147, 45, 3373, 'Recommended', '2023-08-01 15:04:18'),
+(148, 45, 3372, 'ok', '2023-08-01 15:09:34');
 
 -- --------------------------------------------------------
 
@@ -10935,6 +10967,189 @@ CREATE TABLE `permission_role` (
   `permission_id` int(10) UNSIGNED NOT NULL,
   `role_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `permission_role`
+--
+
+INSERT INTO `permission_role` (`id`, `permission_id`, `role_id`) VALUES
+(245, 63, 4),
+(246, 61, 2),
+(247, 66, 2),
+(248, 70, 2),
+(249, 74, 2),
+(250, 78, 2),
+(251, 82, 2),
+(252, 84, 2),
+(253, 88, 2),
+(254, 90, 2),
+(255, 94, 2),
+(256, 96, 2),
+(257, 100, 2),
+(258, 104, 2),
+(259, 108, 2),
+(260, 112, 2),
+(261, 116, 2),
+(262, 61, 5),
+(263, 62, 5),
+(264, 63, 5),
+(265, 64, 5),
+(266, 65, 5),
+(267, 66, 5),
+(268, 67, 5),
+(269, 68, 5),
+(270, 69, 5),
+(271, 70, 5),
+(272, 71, 5),
+(273, 72, 5),
+(274, 73, 5),
+(275, 78, 5),
+(276, 79, 5),
+(277, 80, 5),
+(278, 81, 5),
+(279, 82, 5),
+(280, 83, 5),
+(281, 84, 5),
+(282, 85, 5),
+(283, 86, 5),
+(284, 87, 5),
+(285, 88, 5),
+(286, 89, 5),
+(287, 90, 5),
+(288, 91, 5),
+(289, 92, 5),
+(290, 93, 5),
+(291, 94, 5),
+(292, 95, 5),
+(293, 96, 5),
+(294, 97, 5),
+(295, 98, 5),
+(296, 99, 5),
+(297, 100, 5),
+(298, 101, 5),
+(299, 102, 5),
+(300, 103, 5),
+(301, 104, 5),
+(302, 105, 5),
+(303, 106, 5),
+(304, 107, 5),
+(305, 108, 5),
+(306, 109, 5),
+(307, 110, 5),
+(308, 111, 5),
+(309, 112, 5),
+(310, 113, 5),
+(311, 114, 5),
+(312, 115, 5),
+(313, 116, 5),
+(314, 117, 5),
+(315, 118, 5),
+(316, 119, 5),
+(317, 61, 3),
+(318, 66, 3),
+(319, 70, 3),
+(320, 74, 3),
+(321, 78, 3),
+(322, 80, 3),
+(323, 83, 3),
+(324, 84, 3),
+(325, 86, 3),
+(326, 89, 3),
+(330, 96, 3),
+(331, 100, 3),
+(332, 104, 3),
+(333, 108, 3),
+(334, 112, 3),
+(335, 116, 3),
+(336, 78, 1),
+(337, 79, 1),
+(338, 61, 6),
+(339, 63, 6),
+(340, 64, 6),
+(341, 65, 6),
+(342, 66, 6),
+(343, 68, 6),
+(344, 69, 6),
+(345, 70, 6),
+(346, 72, 6),
+(347, 73, 6),
+(348, 74, 6),
+(349, 76, 6),
+(350, 77, 6),
+(351, 78, 6),
+(352, 82, 6),
+(353, 84, 6),
+(354, 86, 6),
+(355, 87, 6),
+(356, 90, 6),
+(357, 92, 6),
+(358, 93, 6),
+(359, 96, 6),
+(360, 98, 6),
+(361, 99, 6),
+(362, 100, 6),
+(363, 102, 6),
+(364, 103, 6),
+(365, 104, 6),
+(366, 106, 6),
+(367, 107, 6),
+(368, 108, 6),
+(369, 110, 6),
+(370, 111, 6),
+(371, 112, 6),
+(372, 114, 6),
+(373, 115, 6),
+(374, 116, 6),
+(375, 118, 6),
+(376, 119, 6),
+(377, 61, 4),
+(378, 62, 4),
+(379, 65, 4),
+(380, 66, 4),
+(381, 67, 4),
+(382, 68, 4),
+(383, 70, 4),
+(384, 71, 4),
+(385, 72, 4),
+(386, 74, 4),
+(387, 75, 4),
+(388, 76, 4),
+(389, 78, 4),
+(390, 79, 4),
+(391, 80, 4),
+(392, 81, 4),
+(393, 84, 4),
+(394, 85, 4),
+(395, 86, 4),
+(396, 87, 4),
+(397, 90, 4),
+(398, 91, 4),
+(399, 92, 4),
+(400, 93, 4),
+(401, 96, 4),
+(402, 97, 4),
+(403, 98, 4),
+(404, 99, 4),
+(405, 100, 4),
+(406, 101, 4),
+(407, 102, 4),
+(408, 103, 4),
+(409, 104, 4),
+(410, 105, 4),
+(411, 106, 4),
+(412, 107, 4),
+(413, 108, 4),
+(414, 109, 4),
+(415, 110, 4),
+(416, 111, 4),
+(417, 112, 4),
+(418, 113, 4),
+(419, 114, 4),
+(420, 115, 4),
+(421, 116, 4),
+(422, 117, 4),
+(423, 118, 4),
+(424, 119, 4);
 
 -- --------------------------------------------------------
 
@@ -11667,9 +11882,9 @@ CREATE TABLE `rlp_acknowledgement` (
 --
 
 INSERT INTO `rlp_acknowledgement` (`id`, `rlp_info_id`, `user_id`, `ack_order`, `ack_status`, `ack_request_date`, `ack_updated_date`, `is_visible`, `created_by`, `updated_by`) VALUES
-(1194, 1, 3374, 1, 0, '2023-07-30 11:12:54', NULL, 1, 3375, NULL),
-(1195, 1, 3373, 2, 0, '2023-07-30 11:12:53', NULL, 0, 3375, NULL),
-(1196, 1, 3372, 3, 0, '2023-07-30 11:12:54', NULL, 0, 3375, NULL);
+(1194, 1, 3374, 1, 6, '2023-07-30 11:12:54', '2023-08-01 12:12:10', 1, 3375, 3374),
+(1195, 1, 3373, 2, 6, '2023-08-01 12:12:11', '2023-08-01 12:13:10', 1, 3375, 3373),
+(1196, 1, 3372, 3, 1, '2023-08-01 12:13:10', '2023-08-01 12:14:23', 1, 3375, 3372);
 
 -- --------------------------------------------------------
 
@@ -11748,7 +11963,7 @@ CREATE TABLE `rlp_info` (
 --
 
 INSERT INTO `rlp_info` (`id`, `rlp_no`, `rlp_user_id`, `rlp_user_office_id`, `priority`, `request_date`, `request_division`, `request_department`, `request_project`, `request_person`, `designation`, `email`, `contact_number`, `user_remarks`, `totalamount`, `rlp_status`, `is_viewd`, `is_ns`, `created_by`, `created_at`, `updated_by`, `updated_at`, `is_delete`) VALUES
-(1, 'RLP-ENG-HEA-2023-07-001', 3375, 'IEL-000017', 3, '2023-07-30 12:00:00', 16, 130, 21, 'Atiqur Rahman Bhuiyan', '1', 'a@gmail.com', '', 'sdfsd', 0, 2, 1, 0, 3375, '2023-07-30 11:12:53', 1, '0000-00-00 00:00:00', 0);
+(1, 'RLP-ENG-HEA-2023-07-001', 3375, 'IEL-000017', 3, '2023-07-30 12:00:00', 16, 130, 21, 'Atiqur Rahman Bhuiyan', '1', 'a@gmail.com', '', 'sdfsd', 0, 1, 1, 1, 3375, '2023-07-30 11:12:53', 3372, '2023-08-01 12:14:23', 0);
 
 -- --------------------------------------------------------
 
@@ -11779,7 +11994,12 @@ INSERT INTO `rlp_remarks_history` (`id`, `rlp_info_id`, `user_id`, `remarks`, `r
 (719, 1, 1, 'ghf', '2023-07-30 12:49:50'),
 (720, 1, 1, 'ghf', '2023-07-30 12:49:51'),
 (721, 1, 1, 'ghf', '2023-07-30 12:49:51'),
-(722, 1, 1, 'ghf', '2023-07-30 12:49:51');
+(722, 1, 1, 'ghf', '2023-07-30 12:49:51'),
+(723, 1, 3374, 'Recommended', '2023-08-01 12:12:11'),
+(724, 1, 3373, 'Recommended', '2023-08-01 12:13:10'),
+(725, 1, 3372, 'Approved', '2023-08-01 12:14:23'),
+(726, 45, 3372, 'Approved', '2023-08-01 15:04:38'),
+(727, 45, 3372, 'Approved', '2023-08-01 15:08:36');
 
 -- --------------------------------------------------------
 
@@ -11799,12 +12019,12 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `name`, `short_name`, `show_order`) VALUES
-(1, 'Super Admin', 'sa', 1),
-(2, 'Grade-07', 'g7', 0),
-(3, 'Grade-10', 'g10', 0),
-(4, 'Grade-01', 'g1', 0),
-(5, 'Grade-08', 'g8', 0),
-(6, 'Grade-02', 'g2', 0),
+(1, 'member', 'sa', 1),
+(2, 'acknowledgers', 'g7', 0),
+(3, 'approval', 'g10', 0),
+(4, 'team88', 'g1', 0),
+(5, 'admin', 'g8', 0),
+(6, 'superadmin', 'g2', 0),
 (7, 'Grade-03', 'g3', 0),
 (8, 'Grade-06', 'g6', 0),
 (9, 'Grade-05', 'g5', 0),
@@ -11841,7 +12061,10 @@ CREATE TABLE `roles_group` (
 INSERT INTO `roles_group` (`id`, `name`, `details`) VALUES
 (1, 'member', '[\"g1\",\"g2\",\"g3\",\"g4\",\"g5\",\"g6\",\"g7\",\"g8\"]'),
 (2, 'acknowledgers', '[\"g9\",\"g10\",\"g11\",\"g12\",\"g13\",\"g14\",\"g15\"]'),
-(3, 'approval', '[\"g16\",\"g17\",\"g18\",\"g19\",\"g20\"]');
+(3, 'approval', '[\"g16\",\"g17\",\"g18\",\"g19\",\"g20\"]'),
+(4, 'team88', '[\"g1\",\"g2\",\"g3\",\"g4\",\"g5\",\"g6\",\"g7\",\"g8\",\"g9\",\"g10\",\"g11\",\"g12\",\"g13\",\"g14\",\"g15\"]'),
+(5, 'admin', '[\"g1\",\"g2\",\"g3\",\"g4\",\"g5\",\"g6\",\"g7\",\"g8\",\"g9\",\"g10\",\"g11\",\"g12\",\"g13\",\"g14\",\"g15\",\"g16\",\"g17\",\"g18\",\"g19\",\"g20\"]'),
+(6, 'superadmin', '[\"g1\",\"g2\",\"g3\",\"g4\",\"g5\",\"g6\",\"g7\",\"g8\",\"g9\",\"g10\",\"g11\",\"g12\",\"g13\",\"g14\",\"g15\",\"g16\",\"g17\",\"g18\",\"g19\",\"g20\"]');
 
 -- --------------------------------------------------------
 
@@ -18146,11 +18369,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `branch_id`, `department_id`, `project_id`, `office_id`, `role_id`, `type`, `store_id`, `designation`, `role_name`, `name`, `email`, `contact_number`, `profile_image`, `signature_image`, `password`, `is_password_changed`, `is_status`, `created_by`, `created_at`, `updated_by`, `updated_at`) VALUES
-(1, 1, 11, 21, 'SA-000001', 1, '', 1, '10', 'sa', 'Super Admin', 'sa@rlp.com', NULL, '', '1669634775not_approve.png', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, 0, '2020-03-16 09:03:06', 1, '2022-11-27 23:26:15'),
-(3372, 16, 131, 21, 'IEL-000002', 21, '', 0, '112', 'g20', 'Tarafder Md Ruhul Saif', 's@gmail.com', NULL, NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, 0, '2023-07-30 04:56:08', NULL, NULL),
-(3373, 16, 131, 21, 'IEL-000005', 13, '', 0, '15', 'g14', 'Md Jobaer Kabir', 'jk@gmail.com', NULL, NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, 0, '2023-07-30 04:56:41', NULL, NULL),
-(3374, 16, 129, 21, 'IEL-000020', 3, '', 0, '2', 'g10', 'Md. Babul Farajee', 'bf@gmail.com', NULL, NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, 0, '2023-07-30 04:57:40', NULL, NULL),
-(3375, 16, 130, 21, 'IEL-000017', 5, '', 0, '1', 'g8', 'Atiqur Rahman Bhuiyan', 'a@gmail.com', '01729714503', NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, 0, '2023-07-30 05:09:21', 1, '2023-07-31 04:02:14');
+(1, 16, 131, 21, 'SA-000001', 1, '6', 1, '10', 'sa', 'Super Admin', 'sa@rlp.com', NULL, '', '1669634775not_approve.png', 'e10adc3949ba59abbe56e057f20f883e', 1, 1, 0, '2020-03-16 09:03:06', 1, '2023-07-31 20:22:53'),
+(3372, 16, 131, 21, 'IEL-000002', 21, '3', 0, '112', 'g20', 'Tarafder Md Ruhul Saif', 's@gmail.com', NULL, NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, 0, '2023-07-30 04:56:08', NULL, NULL),
+(3373, 16, 131, 21, 'IEL-000005', 13, '2', 0, '15', 'g14', 'Md Jobaer Kabir', 'jk@gmail.com', NULL, NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, 0, '2023-07-30 04:56:41', NULL, NULL),
+(3374, 16, 129, 21, 'IEL-000020', 3, '2', 0, '2', 'g10', 'Md. Babul Farajee', 'bf@gmail.com', NULL, NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, 0, '2023-07-30 04:57:40', NULL, NULL),
+(3375, 16, 130, 21, 'IEL-000017', 5, '1', 0, '1', 'g8', 'Atiqur Rahman Bhuiyan', 'a@gmail.com', '01729714503', NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, 0, '2023-07-30 05:09:21', 1, '2023-07-31 19:39:06'),
+(3377, 16, 130, 21, 'IEL-000016', 18, '2', 0, '2', 'g11', 'Muhammed Fakhrul Islam', 'fp@gmail.com', '123456', NULL, NULL, 'e10adc3949ba59abbe56e057f20f883e', 0, 1, 0, '2023-07-31 19:41:37', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -18868,31 +19092,31 @@ ALTER TABLE `middle_datas`
 -- AUTO_INCREMENT for table `notesheets`
 --
 ALTER TABLE `notesheets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=132;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
 
 --
 -- AUTO_INCREMENT for table `notesheets_master`
 --
 ALTER TABLE `notesheets_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT for table `notesheet_access_chain`
 --
 ALTER TABLE `notesheet_access_chain`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `notesheet_acknowledgement`
 --
 ALTER TABLE `notesheet_acknowledgement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=478;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=481;
 
 --
 -- AUTO_INCREMENT for table `notesheet_remarks_history`
 --
 ALTER TABLE `notesheet_remarks_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=146;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- AUTO_INCREMENT for table `notesheet_roles_group`
@@ -18916,7 +19140,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `permission_role`
 --
 ALTER TABLE `permission_role`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=243;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=425;
 
 --
 -- AUTO_INCREMENT for table `plant_and_equipment`
@@ -18994,7 +19218,7 @@ ALTER TABLE `rlp_info`
 -- AUTO_INCREMENT for table `rlp_remarks_history`
 --
 ALTER TABLE `rlp_remarks_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=723;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=728;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -19006,7 +19230,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `roles_group`
 --
 ALTER TABLE `roles_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `role_access`
@@ -19054,7 +19278,7 @@ ALTER TABLE `temp_info`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3377;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3378;
 
 --
 -- AUTO_INCREMENT for table `vendors`
