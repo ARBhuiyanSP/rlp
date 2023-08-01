@@ -2041,3 +2041,17 @@ function getDefaultCategoryCodeByStore($table, $fieldName, $modifier, $defaultCo
     return $defaultCode;
     
 }
+
+
+function check_permission($url){
+    $permissin_urls = $_SESSION['logged']['permissin_urls'];
+    if(in_array($url, $permissin_urls)){
+        return true;
+    }else{
+        return false;
+    }
+
+    
+
+    
+}

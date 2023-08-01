@@ -38,6 +38,10 @@ $user_type = $_SESSION['logged']['type'];
             <li class="<?php if ($page_name == "companies.php") {
                 echo "active";
             } ?>"><a href="companies.php"><i class="fa fa-user-circle"></i> <span>Organization</span></a></li>
+			
+			<li class="<?php if ($page_name == "role-list.php") {
+                echo "active";
+            } ?>"><a href="role-list.php"><i class="fa fa-user-circle"></i> <span>Role Access</span></a></li>
 
 			
 			<!-- <li class="<?php if ($page_name == "supplier_create.php") {
@@ -79,75 +83,84 @@ $user_type = $_SESSION['logged']['type'];
 <?php } ?>
             <li class="header">Operation</li>
            
+				<?php if(check_permission('rlp-list')){ ?>
 				<li class="<?php if ($page_name == "rlp_list.php") {
                 echo "active";
             } ?>">
                     <a href="rlp_list.php"><i class="fa fa-file-text-o"></i> <span>RLP</span></a>
                 </li>
+				<?php } ?>
 				
 				
 				
-			<?php if (is_not_guest($user_id_session)) { ?>
+			
 				
 				
-				<?php if ($_SESSION['logged']['type']!='user') { ?>		
+				<?php if(check_permission('notesheet-list')){ ?>		
 				<li class="<?php if ($page_name == "notesheets_list.php") {
                 echo "active";
             } ?>">
                     <a href="notesheets_list.php"><i class="fa fa-file-text-o"></i> <span>Notesheet</span></a>
                 </li>
+				<?php } ?>
+				<?php if(check_permission('workorder-list')){ ?>
 				<li class="<?php if ($page_name == "workorders_list.php") {
                 echo "active";
             } ?>">
                     <a href="workorders_list.php"><i class="fa fa-file-text-o"></i> <span>Workorders</span></a>
                 </li>
-				<?php }} ?>
-				<?php if ($_SESSION['logged']['type']!='user') { ?>	
-				<!-- <li class="<?php if ($page_name == "equipment_list.php") {
-                echo "active";
-            } ?>">
-                    <a href="equipment_list.php"><i class="fa fa-file-text-o"></i> <span>Equipment</span></a>
-                </li> -->
+				<?php } ?>
+				
+			
+
 				
 <li class="header">Assets</li>
+				
+				<?php if(check_permission('asset-list')){ ?>
 				<li class="<?php if ($page_name == "assets-list.php") {
                 echo "active";
             } ?>">
                     <a href="assets-list.php"><i class="fa fa-file-text-o"></i> <span>Assets</span></a>
                 </li>
-
+				<?php } ?>
+				<?php if(check_permission('assign-list')){ ?>
                 <li class="<?php if ($page_name == "assign-list.php") {
                 echo "active";
             } ?>">
                     <a href="assign-list.php"><i class="fa fa-file-text-o"></i> <span>Assigned</span></a>
                 </li>
-
+				<?php } ?>
+				<?php if(check_permission('service-area-list')){ ?>
                 <li class="<?php if ($page_name == "service_entry.php") {
                 echo "active";
             } ?>">
                     <a href="service_entry.php"><i class="fa fa-file-text-o"></i> <span>Service Area</span></a>
                 </li>
-				
+				<?php } ?>
+				<?php if(check_permission('disposal-list')){ ?>
                 <li class="<?php if ($page_name == "disposal.php") {
                 echo "active";
             } ?>">
                     <a href="disposal.php"><i class="fa fa-file-text-o"></i> <span>Disposal</span></a>
                 </li>
-
+				<?php } ?>
 <li class="header">Consumable Products</li>
+				<?php if(check_permission('material-receive-list')){ ?>
 				<li class="<?php if ($page_name == "receive-list.php") {
                 echo "active";
             } ?>">
                     <a href="receive-list.php"><i class="fa fa-file-text-o"></i> <span>Receive</span></a>
                 </li>
+				<?php } ?>
+				<?php if(check_permission('material-issue-list')){ ?>
 				<li class="<?php if ($page_name == "issue-list.php") {
                 echo "active";
             } ?>">
                     <a href="issue-list.php"><i class="fa fa-file-text-o"></i> <span>Issue/Consumption</span></a>
                 </li>
+				<?php } ?>
 				
-				
-<?php } ?>
+
 			<!--- <li class="header">Maintenance</li>
 			<li class="<?php if ($page_name == "schedulemaintenance.php") {
                 echo "active";

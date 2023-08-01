@@ -13,6 +13,7 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == "loginAsAnotherUser"
         $row        =   $presult->fetch_object();
         $name       =   $row->name;
         $user_id    =   $row->id;
+        $type    =   $row->type;
         unset($_SESSION['error']);
         $_SESSION['success']                =   $name." have successfully loggedin!";
         $_SESSION['logged']['email']        =   $row->email;
@@ -31,7 +32,20 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == "loginAsAnotherUser"
         $_SESSION['logged']['is_password_changed']	=   (isset($row->is_password_changed) && !empty($row->is_password_changed) ? $row->is_password_changed : 0);
         $_SESSION['logged']['status']       =   true;
         $_SESSION['is_login_as']            =   $is_login_as;    
-        $_SESSION['su_id']                  =   $su_id;    
+        $_SESSION['su_id']                  =   $su_id; 
+
+		$_SESSION['logged']['permissin_urls'] =   [];	
+		$role_query    = "SELECT t2.name AS permision_url FROM `permission_role` AS t1
+                    INNER JOIN permissions AS t2 ON t1.permission_id=t2.id
+                    WHERE t1.role_id='$type'";
+        $rResult = $conn->query($role_query);
+		if ($rResult->num_rows > 0) {
+			while ($rData = $rResult->fetch_assoc()) {
+				$_SESSION['logged']['permissin_urls'][]=$rData['permision_url'];
+			}
+		}
+			
+		
         $feedback   =   [
             'status'    => "success",
             'message'   => "You have been successfully login AS ".$name,
@@ -84,6 +98,7 @@ if (isset($_POST['login_submit']) && !empty($_POST['login_submit'])) {
                 $row        =   $presult->fetch_object();
                 $name       =   $row->name;
                 $user_id    =   $row->id;
+                $type    =   $row->type;
                 unset($_SESSION['error']);
                 $_SESSION['success']                =   $name." have successfully loggedin!";
                 $_SESSION['logged']['email']        =   $email;
@@ -102,6 +117,18 @@ if (isset($_POST['login_submit']) && !empty($_POST['login_submit'])) {
                 $_SESSION['logged']['is_password_changed']    =   (isset($row->is_password_changed) && !empty($row->is_password_changed) ? $row->is_password_changed : 0);
                 $_SESSION['logged']['status']       =   true;
                 $_SESSION['is_login_as']            =   false;
+				
+				$_SESSION['logged']['permissin_urls'] =   [];	
+		$role_query    = "SELECT t2.name AS permision_url FROM `permission_role` AS t1
+                    INNER JOIN permissions AS t2 ON t1.permission_id=t2.id
+                    WHERE t1.role_id='$type'";
+        $rResult = $conn->query($role_query);
+		if ($rResult->num_rows > 0) {
+			while ($rData = $rResult->fetch_assoc()) {
+				$_SESSION['logged']['permissin_urls'][]=$rData['permision_url'];
+			}
+		}
+		
                 header("location: dashboard.php");
                 exit();
             }else{
