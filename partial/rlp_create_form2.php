@@ -66,7 +66,7 @@
 		<div class="col-sm-4">
 			<div class="form-group">
 				<label for="sel1">Division:</label>
-				<select class="form-control select2" id="branch_id" name="request_division" onchange="getDepartmentByBranch(this.value);" required >
+				<select class="form-control select2" id="branch_id" name="division" onchange="getDepartmentByBranch(this.value);" required >
 					<option value="">Please select</option>
 					<?php
 					$table = "branch";
@@ -83,7 +83,7 @@
 		<div class="col-sm-4">
 			<div class="form-group">
 				<label for="sel1">Department:</label>
-				<select class="form-control select2" id="department_id" name="request_department" required >
+				<select class="form-control select2" id="department_id" name="department" required >
 					<option value="">Please select</option>
 					
 				</select>
@@ -99,8 +99,8 @@
 </form>
 <?php 
 if(isset($_POST['getchain'])){	
-	$division_id	=	$_POST['request_division'];
-	$department_id		=	$_POST['request_department'];
+	$division_id	=	$_POST['division'];
+	$department_id		=	$_POST['department'];
 ?>
 <form action="" method="post">
     <div class="row">
@@ -146,7 +146,7 @@ if(isset($_POST['getchain'])){
 						<div class="col-md-2">
                             <div class="form-group">
                                 <label class="field_title">Requested For <span class="reqr"> ***</span></label>
-								<input type='text' name="office_id" class='form-control employeeid' id='employeeid_1' placeholder='Enter employee id No' required >
+								<input type='text' name="requested_id" class='form-control employeeid' id='employeeid_1' placeholder='Enter employee id No' required >
                             </div>
                         </div>
 						<div class="col-md-2">
@@ -176,7 +176,7 @@ if(isset($_POST['getchain'])){
 						<div class="col-md-2">
                             <div class="form-group">
                                 <label class="field_title">Employee Name</label>
-                                <input type='text' name="name" class='form-control name' id='name_1' readonly >
+                                <input type='text' name="request_person" class='form-control name' id='name_1' required >
                             </div>
                         </div>
 					</div>

@@ -83,6 +83,9 @@
     </div>
     <!-- /.row -->
 	<div class="row">
+					<div class="col-sm-3 col-xs-3" style="padding-top:100px;">
+						<center><img src="images/signatures/<?php echo getSignatureByUserId($rlp_info->created_by); ?>" height="70px"/></br><?php echo getUserNameByUserId($rlp_info->created_by); ?></br>________________________</br>Requested By</center>
+					</div>
 					<?php
 					$table = "rlp_acknowledgement WHERE rlp_info_id=$rlp_id";
 					$order = 'DESC';

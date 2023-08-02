@@ -1323,8 +1323,8 @@ function get_rlp_chain_assign_user_view($data){
 } */
 
 function get_user_department_wise_rlp_chain_for_create($division_id,$department_id){
-    $division_id    =   $_POST['request_division'];
-    $department_id  =   $_POST['request_department'];
+    $division_id    =   $_POST['division'];
+    $department_id  =   $_POST['department'];
     $table          =   "rlp_access_chain"
             . " WHERE chain_type='default'"
             . " AND division_id=$division_id"
