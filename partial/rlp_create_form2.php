@@ -211,13 +211,15 @@ if(isset($_POST['getchain'])){
             <div class="form-group">
                 <label for="exampleId">RLP No</label>
                 <?php
+				
 				$prefix="RLP";
 				$formater_length=3;				
-				$division_id    =   $_SESSION['logged']['branch_id'];
+				/* $division_id    =   $_SESSION['logged']['branch_id'];
 				$department_id  =   $_SESSION['logged']['department_id'];
 				$office_id      =   $_SESSION['logged']['office_id'];
-				$user_id        =   $_SESSION['logged']['user_id'];
-				
+				$user_id        =   $_SESSION['logged']['user_id']; */
+				$division_id	=	$_POST['division'];
+				$department_id		=	$_POST['department'];			
 				$rlpNo    =   get_rlp_no($prefix,$formater_length,$division_id,$department_id); ?>
                 <div class="rlpno_style"><?php echo $rlpNo; ?></div>
                 <input type="hidden" name="rlp_no" value="<?php echo $rlpNo; ?>">

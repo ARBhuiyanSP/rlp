@@ -648,7 +648,35 @@ function get_table_next_primary_id($table){
     $nextRow    =   $total_row+1;
     return $nextRow;
 }
+
 function get_rlp_no($prefix="RLP", $formater_length=3){
+    global $conn;
+    
+    $division_id    =   $_POST['division'];
+    $department_id  =   $_POST['department']; 
+    
+    $year       =   date("Y");
+    $month      =   date("m");
+    $sql        = "SELECT count('id') as total FROM rlp_info WHERE YEAR(created_at) = '$year' AND MONTH(created_at) = $month AND is_delete=0 AND request_division=$division_id AND request_department=$department_id ";
+    $result     = $conn->query($sql);
+    $total_row  =   $result->fetch_object()->total;
+    
+    $nextRLP    =   $total_row+1;
+    $finalRLPNo = sprintf('%0' . $formater_length . 'd', $nextRLP);
+    $div    = replace_dashes(getDivisionNameById($division_id));
+    $divName    = mb_substr($div, 0, 3);
+    //$depName    = replace_dashes(getDepartmentNameById($department_id));
+    $dep    = replace_dashes(getDepartmentNameById($department_id));
+	$depName    = mb_substr($dep, 0, 3);
+	
+	//$pro   = replace_dashes(getProjectNameById($project_id));
+    //$proName    = strtoupper(mb_substr($pro, 0, 3));
+    
+    //return $prefix."-".$year."-".$month."-".$divName.'-'.$proName.'-'.$finalRLPNo;
+    return $prefix."-".$divName."-".$depName."-".$year.'-'.$month.'-'.$finalRLPNo;
+}
+
+/* function get_rlp_no($prefix="RLP", $formater_length=3){
     global $conn;
     
     $division_id    =   $_SESSION['logged']['branch_id'];
@@ -676,7 +704,7 @@ function get_rlp_no($prefix="RLP", $formater_length=3){
     
     //return $prefix."-".$year."-".$month."-".$divName.'-'.$proName.'-'.$finalRLPNo;
     return $prefix."-".$divName."-".$proName."-".$year.'-'.$month.'-'.$finalRLPNo;
-}
+} */
 function get_notesheet_no($prefix="NS", $formater_length=3){
     global $conn;
     

@@ -38,6 +38,7 @@ function execute_rlp_info_table(){
     $request_division		= (isset($_POST['request_division']) && !empty($_POST['request_division']) ? trim(mysqli_real_escape_string($conn,$_POST['request_division'])) : "");
     $request_department		= (isset($_POST['request_department']) && !empty($_POST['request_department']) ? trim(mysqli_real_escape_string($conn,$_POST['request_department'])) : "");
     $request_project		= (isset($_POST['request_project']) && !empty($_POST['request_project']) ? trim(mysqli_real_escape_string($conn,$_POST['request_project'])) : "");
+    $request_person		= (isset($_POST['request_person']) && !empty($_POST['request_person']) ? trim(mysqli_real_escape_string($conn,$_POST['request_person'])) : "");
     $rlpNo		= (isset($_POST['rlp_no']) && !empty($_POST['rlp_no']) ? trim(mysqli_real_escape_string($conn,$_POST['rlp_no'])) : "");
     $remarks		= (isset($_POST['remarks']) && !empty($_POST['remarks']) ? trim(mysqli_real_escape_string($conn,$_POST['remarks'])) : "");
     
@@ -55,7 +56,7 @@ function execute_rlp_info_table(){
         'request_division'      =>  $request_division,
         'request_department'    =>  $request_department,
         'request_project'   	=>  $request_project,
-        'request_person'        =>  $_SESSION['logged']['user_name'],
+        'request_person'        =>  $request_person,
         'designation'           =>  $_SESSION['logged']['designation'],
         'email'                 =>  $_SESSION['logged']['email'],
         'contact_number'        =>  $_SESSION['logged']['contact_number'],
