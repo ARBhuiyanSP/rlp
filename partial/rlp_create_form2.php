@@ -2,13 +2,13 @@
     $currentUserId  =   $_SESSION['logged']['user_id'];
     if(!empty($_SESSION['logged']['branch_id']) && !empty($_SESSION['logged']['department_id'])){
 ?>
+
 <form action="" method="post">
-    <div class="row">
+	<div class="row">
 		<div class="col-sm-4">
 			<div class="form-group">
 				<label for="sel1">Division:</label>
-				 <?php if (is_super_admin($user_id_session)) { ?>
-				<select class="form-control" id="branch_id" name="request_division" onchange="getDepartmentByBranch(this.value);">
+				<select class="form-control select2" id="branch_id" name="request_division" onchange="getDepartmentByBranch(this.value);" required >
 					<option value="">Please select</option>
 					<?php
 					$table = "branch";
@@ -20,32 +20,44 @@
 						<option value="<?php echo $data->id; ?>"><?php echo $data->name; ?></option>
 					<?php } ?>
 				</select>
-				 <?php } else{?>
-				 <input type="text" class="form-control" value="<?php echo getDivisionNameById($_SESSION['logged']['branch_id']); ?>" readonly />
-				 <input name="request_division" type="hidden" value="<?php echo $_SESSION['logged']['branch_id']; ?>" />
-				 <?php } ?>
 			</div>
 		</div>
 		<div class="col-sm-4">
 			<div class="form-group">
 				<label for="sel1">Department:</label>
-				<?php if (is_super_admin($user_id_session)) { ?>
-				<select class="form-control" id="department_id" name="request_department">
+				<select class="form-control select2" id="department_id" name="request_department" required >
 					<option value="">Please select</option>
-					<?php
-					$table = "department";
-					$order = "ASC";
-					$column = "name";
-					$datas = getTableDataByTableName($table, $order, $column);
-					foreach ($datas as $data) {
-						?>
-						<option value="<?php echo $data->id; ?>"><?php echo $data->name; ?></option>
-					<?php } ?>
+					
 				</select>
-				<?php } else{?>
-				 <input type="text" class="form-control" value="<?php echo getDepartmentNameById($_SESSION['logged']['department_id']); ?>" readonly />
-				 <input name="request_department" type="hidden" value="<?php echo $_SESSION['logged']['department_id']; ?>" />
-				 <?php } ?>
+			</div>
+		</div>
+		<div class="col-sm-2">
+			<div class="form-group">
+				<label for="sel1" style="color:#fff;">.</label>
+				<input type="submit" name="getchain" id="getchain" class="form-control btn btn-block btn-primary" value="Get Approval Chain" />
+			</div>
+		</div>
+	</div>
+</form>
+<?php 
+if(isset($_POST['getchain'])){	
+	$division_id	=	$_POST['request_division'];
+	$department_id		=	$_POST['request_department'];
+?>
+<form action="" method="post">
+    <div class="row">
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="sel1">Division:</label>
+				 <input type="text" class="form-control" value="<?php echo getDivisionNameById($division_id); ?>" readonly />
+				 <input name="request_division" type="hidden" value="<?php echo $division_id; ?>" />
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="form-group">
+				<label for="sel1">Department:</label>
+				 <input type="text" class="form-control" value="<?php echo getDepartmentNameById($department_id); ?>" readonly />
+				 <input name="request_department" type="hidden" value="<?php echo $department_id; ?>" />
 			</div>
 		</div>
 		<div class="col-sm-4">
@@ -259,7 +271,8 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <?php echo get_user_project_wise_rlp_chain_for_create(); ?>
+            <?php //echo get_user_project_wise_rlp_chain_for_create(); ?>
+            <?php echo get_user_department_wise_rlp_chain_for_create($division_id, $department_id); ?>
         </div>
     </div>
     <div class="row">
@@ -282,6 +295,9 @@
 
     <?php }else{ ?>
     <div class="alert alert-warning">
-      <strong>Warning!</strong> Division and Department are required to create RLP .
+      <strong>Attention !</strong> Division and Department are required to create RLP .
     </div>
     <?php } ?>
+<?php } else{ ?>
+ <strong>Attention !</strong> Division and Department are required to create RLP .
+<?php } ?>

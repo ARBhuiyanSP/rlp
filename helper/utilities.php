@@ -1310,9 +1310,21 @@ function get_rlp_chain_assign_user_view($data){
       </div>
 <?php }
 }
-function get_user_department_wise_rlp_chain_for_create(){
+/* function get_user_department_wise_rlp_chain_for_create(){
     $division_id    =   $_SESSION['logged']['branch_id'];
     $department_id  =   $_SESSION['logged']['department_id'];
+    $table          =   "rlp_access_chain"
+            . " WHERE chain_type='default'"
+            . " AND division_id=$division_id"
+            . " AND department_id=$department_id";
+    $defaultChain       =   getDataRowIdAndTable($table);
+    $defaultChainUsers  =   (isset($defaultChain) && !empty($defaultChain) ? json_decode($defaultChain->users) : "");
+    include 'partial/rlp_chain_for_form.php';
+} */
+
+function get_user_department_wise_rlp_chain_for_create($division_id,$department_id){
+    $division_id    =   $_POST['request_division'];
+    $department_id  =   $_POST['request_department'];
     $table          =   "rlp_access_chain"
             . " WHERE chain_type='default'"
             . " AND division_id=$division_id"
