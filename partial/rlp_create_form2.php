@@ -220,7 +220,7 @@ if(isset($_POST['getchain'])){
 				$user_id        =   $_SESSION['logged']['user_id']; */
 				$division_id	=	$_POST['division'];
 				$department_id		=	$_POST['department'];			
-				$rlpNo    =   get_rlp_no($prefix,$formater_length,$division_id,$department_id); ?>
+				$rlpNo    =   get_rlp_no($prefix,$formater_length); ?>
                 <div class="rlpno_style"><?php echo $rlpNo; ?></div>
                 <input type="hidden" name="rlp_no" value="<?php echo $rlpNo; ?>">
             </div>
