@@ -48,7 +48,8 @@ function execute_rlp_info_table(){
     $table_sql     =   "rlp_info";
     $dataParam     =   [
         'id'                    =>  get_table_next_primary_id($table_sql),
-        'rlp_no'                =>  get_rlp_no(),
+        //'rlp_no'                =>  get_rlp_no(),
+        'rlp_no'                =>  $rlpNo,
         'rlp_user_id'           =>  $_SESSION['logged']['user_id'],
         'rlp_user_office_id'    =>  $_SESSION['logged']['office_id'],
         'priority'              =>  $priority,

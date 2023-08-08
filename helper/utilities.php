@@ -649,7 +649,7 @@ function get_table_next_primary_id($table){
     return $nextRow;
 }
 
-/* function get_rlp_no($prefix="RLP", $formater_length=3){
+ function get_rlp_no($prefix="RLP", $formater_length=3){
     global $conn;
     
     $division_id    =   $_POST['division'];
@@ -674,8 +674,8 @@ function get_table_next_primary_id($table){
     
     //return $prefix."-".$year."-".$month."-".$divName.'-'.$proName.'-'.$finalRLPNo;
     return $prefix."-".$divName."-".$depName."-".$year.'-'.$month.'-'.$finalRLPNo;
-} */
-function get_rlp_no($prefix="RLP", $formater_length=3){
+} 
+/* function get_rlp_no($prefix="RLP", $formater_length=3){
     global $conn;
     
     $division_id    =   $_SESSION['logged']['branch_id'];
@@ -703,7 +703,7 @@ function get_rlp_no($prefix="RLP", $formater_length=3){
     
     //return $prefix."-".$year."-".$month."-".$divName.'-'.$proName.'-'.$finalRLPNo;
     return $prefix."-".$divName."-".$proName."-".$year.'-'.$month.'-'.$finalRLPNo;
-} 
+} */ 
 function get_notesheet_no($prefix="NS", $formater_length=3){
     global $conn;
     
