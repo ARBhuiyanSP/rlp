@@ -25,7 +25,7 @@
     <!-- info row -->
     <div class="row invoice-info">
         <div class="col-md-4 invoice-col">
-            From
+            Requested For
             <address>
                 <strong>Name:&nbsp;<?php echo $rlp_info->request_person ?></strong><br>
                 Division:&nbsp;<?php echo getDivisionNameById($rlp_info->request_division) ?><br>
