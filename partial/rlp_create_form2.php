@@ -108,14 +108,14 @@ if(isset($_POST['getchain'])){
 			<div class="form-group">
 				<label for="sel1">Division:</label>
 				 <input type="text" class="form-control" value="<?php echo getDivisionNameById($division_id); ?>" readonly />
-				 <input name="request_division" type="text" value="<?php echo $division_id; ?>" />
+				 <input name="request_division" type="hidden" value="<?php echo $division_id; ?>" />
 			</div>
 		</div>
 		<div class="col-sm-4">
 			<div class="form-group">
 				<label for="sel1">Department:</label>
 				 <input type="text" class="form-control" value="<?php echo getDepartmentNameById($department_id); ?>" readonly />
-				 <input name="request_department" type="text" value="<?php echo $department_id; ?>" />
+				 <input name="request_department" type="hidden" value="<?php echo $department_id; ?>" />
 			</div>
 		</div>
 		<div class="col-sm-4">
