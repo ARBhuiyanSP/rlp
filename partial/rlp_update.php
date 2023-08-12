@@ -23,11 +23,11 @@
             From
             <address>
                 <strong>Name:&nbsp;<?php echo $rlp_info->request_person ?></strong><br>
-                Designation:&nbsp;<?php echo getDesignationNameById($rlp_info->designation) ?><br>
+                <!-- Designation:&nbsp;<?php// echo getDesignationNameById($rlp_info->designation) ?><br> -->
                 Division:&nbsp;<?php echo getDivisionNameById($rlp_info->request_division) ?><br>
                 Department:&nbsp;<?php echo getDepartmentNameById($rlp_info->request_department) ?><br>
-                Contact:&nbsp;<?php echo $rlp_info->contact_number ?><br>
-                Email:&nbsp;: <?php echo $rlp_info->email ?>
+                <!--- Contact:&nbsp;<?php //echo $rlp_info->contact_number ?><br>
+                Email:&nbsp;: <?php //echo $rlp_info->email ?> -->
             </address>
         </div>
         <!-- /.col -->

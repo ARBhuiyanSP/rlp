@@ -28,7 +28,8 @@
             From
             <address>
                 <strong>Name:&nbsp;<?php echo $rlp_info->request_person ?></strong><br>
-                Department:&nbsp;<?php echo getNameByIdAndTable("department",$rlp_info->request_department) ?>
+                Division:&nbsp;<?php echo getDivisionNameById($rlp_info->request_division) ?><br>
+                Department:&nbsp;<?php echo getDepartmentNameById($rlp_info->request_department) ?><br>
             </address>
         </div>
         <!-- /.col -->
