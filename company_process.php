@@ -5,14 +5,16 @@ include 'connection/connect.php';
 	$update=false;
 	$id="";
 	$company_name="";
+	$company_address="";
 
 	if(isset($_POST['add'])){
 		$id				=	$_POST['id'];
 		$company_name	=	$_POST['company_name'];
+		$company_address	=	$_POST['company_address'];
 
 		
 		
-		$query = "INSERT INTO `companies` (`company_name`) VALUES ('$company_name')";
+		$query = "INSERT INTO `companies` (`company_name`,`company_address`) VALUES ('$company_name','$company_address')";
         $conn->query($query);
 		
 		
@@ -43,6 +45,7 @@ include 'connection/connect.php';
 		
 		$id				=	$row['id'];
 		$company_name	=	$row['company_name'];
+		$company_address	=	$row['company_address'];
 
 		$update=true;
 	}
@@ -50,12 +53,13 @@ include 'connection/connect.php';
 		
 		$id				=	$_POST['id'];
 		$company_name	=	$_POST['company_name'];
+		$company_address	=	$_POST['company_address'];
 		
 		 /*
         *  Update Data Into inv_receive Table:
 		*/
 		
-		$query2    = "UPDATE companies SET company_name='$company_name' WHERE id=$id";
+		$query2    = "UPDATE companies SET company_name='$company_name',company_address='$company_address' WHERE id=$id";
 		$result2 = $conn->query($query2);
 		
 		/* $query    = "UPDATE inv_supplierbalance SET code='$code',name='$name',address='$address',contact_person='$contact_person',supplier_phone='$supplier_phone',supplier_op_balance='$supplier_op_balance' WHERE id=$id";
@@ -80,5 +84,6 @@ include 'connection/connect.php';
 
 		$id				=	$row['id'];
 		$company_name	=	$row['company_name'];
+		$company_address	=	$row['company_address'];
 	}
 ?>

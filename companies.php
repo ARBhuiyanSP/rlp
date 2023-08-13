@@ -45,6 +45,10 @@ include ('company_process.php');
                                       <div class="form-group">
                                         <input type="text" name="company_name" value="<?= $company_name; ?>" class="form-control" placeholder="Enter Company Name" required>
                                       </div></br>
+									  <!--- New Form Suppliers as Vendors--->
+                                      <div class="form-group">
+										<textarea class="form-control" name="company_address" placeholder="Enter Company Address"><?= $company_address; ?></textarea>
+                                      </div></br>
                                       <!--- New Form Suppliers as Vendors--->
                                       <!--- New Form Suppliers as Vendors--->
                                       
@@ -69,8 +73,8 @@ include ('company_process.php');
                                     <table class="table table-hover" id="example">
                                         <thead>
                                             <tr>
-                                                <th width="10%">SL No</th>
                                                 <th width="60%">Company Name</th>
+                                                <th width="60%">Company Address</th>
                                                 <th width="30%">Action</th>
                                             </tr>
                                         </thead>
@@ -81,9 +85,9 @@ include ('company_process.php');
                                                 $i=1;
                                                 foreach ($projectsData as $data) { ?>
                                             <tr>
-                                                <td><?php echo $i++; ?></td>
-                                                <td><?php echo $data['company_name']; ?></td>
-                                                <td>
+                                                <td width="40%"><?php echo $data['company_name']; ?></td>
+                                                <td><?php echo $data['company_address']; ?></td>
+                                                <td width="15%">
                                                     <a href="company_process.php?delete=<?php echo $data['id']; ?>" class="btn btn-danger" onclick="return confirm('Do you want delete this record?');"><i class="fa fa-trash"></i></a>
                                                     <a href="companies.php?edit=<?= $data['id']; ?>" class="btn btn-success"><i class="fa fa-edit"></i></a>
                                                 </td>
