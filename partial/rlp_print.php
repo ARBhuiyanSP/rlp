@@ -24,7 +24,7 @@
         .col -->
     <!-- info row -->
     <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding-bottom:20px;">
 			<center>
 				<h3><?php echo getDivisionNameById($rlp_info->request_division) ?></h3>
 				<p><?php echo getDivisionAddressById($rlp_info->request_division) ?></p>
