@@ -585,6 +585,17 @@ function getDivisionNameById($id){
     }
     return $name;
 }
+function getDivisionAddressById($id){
+    global $conn;
+    $table  =   "branch";
+    $sql = "SELECT * FROM $table WHERE id=$id";
+    $result = $conn->query($sql);
+    $division_address   =   '';
+    if ($result->num_rows > 0) {
+        $division_address   =   $result->fetch_object()->division_address;
+    }
+    return $division_address;
+}
 function getCandidateNameById($id){
     global $conn;
     $table  =   "candidates";

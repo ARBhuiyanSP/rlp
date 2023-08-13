@@ -12,19 +12,25 @@
 </style>
 <!-- Main content -->
 <section class="invoice" id="printableArea">
-    <!-- title row -->
+    <!-- title row
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 col-sm-12 col-md-12">
             <h2 class="page-header">
                 <i class="fa fa-globe"></i> RLP Details.
-                <small class="pull-right">Priority: <?php echo getPriorityName($rlp_info->priority) ?></small>
+                <small class="pull-right">Priority: <?php //echo getPriorityName($rlp_info->priority) ?></small>
             </h2>
         </div>
-        <!-- /.col -->
-    </div>
+    </div> 
+        .col -->
     <!-- info row -->
-    <div class="row invoice-info">
-        <div class="col-md-4 invoice-col">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<center>
+				<h3><?php echo getDivisionNameById($rlp_info->request_division) ?></h3>
+				<p><?php echo getDivisionAddressById($rlp_info->request_division) ?></p>
+			</center>
+		</div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
             Requested For
             <address>
                 <strong>Name:&nbsp;<?php echo $rlp_info->request_person ?></strong><br>
@@ -33,12 +39,13 @@
             </address>
         </div>
         <!-- /.col -->
-        <div class="col-md-8 invoice-col">
-            <div class="pull-right">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+            <span class="pull-right">
                 <b>RLP NO: &nbsp;<span style="border:1px solid;padding:2px 5px;"><?php echo $rlp_info->rlp_no ?></span></b><br>
-                <b>Request Date:</b> <?php echo human_format_date($rlp_info->created_at) ?><br><br>
+                <b>Request Date:</b> <?php echo human_format_date($rlp_info->created_at) ?><br>
+                <b>Priority:</b> <?php echo getPriorityName($rlp_info->priority) ?><br>
                 <b>Current Status: &nbsp;<span style="border:1px solid;padding:2px 5px;"><?php echo get_status_name($rlp_info->rlp_status) ?></span></b><br>
-            </div>            
+            </span>            
         </div>
         <!-- /.col -->
     </div>
@@ -95,9 +102,15 @@
 					?>
 					
 					<?php //echo (isset($dat->ack_updated_date) && !empty($dat->ack_updated_date) ? human_format_date($dat->ack_updated_date) : ""); ?>
-					<div class="col-sm-3 col-xs-3" style="padding-top:100px;">
+					<!-- <div class="col-sm-3 col-xs-3" style="padding-top:100px;">
 						<center><?php if(get_status_name($dat->ack_status)=='Approve' || get_status_name($dat->ack_status)=='Recommended'){ ?><img src="images/signatures/<?php echo getSignatureByUserId($dat->user_id); ?>" height="70px"/><?php } ?></br><?php echo getUserNameByUserId($dat->user_id) ?></br>________________________</br><?php echo getDesignationByUserId($dat->user_id) ?></center>
+					</div> -->
+					
+					<?php if(get_status_name($dat->ack_status)=='Approve' || get_status_name($dat->ack_status)=='Recommended'){ ?>
+					<div class="col-sm-3 col-xs-3" style="padding-top:100px;">
+						<center><img src="images/signatures/<?php echo getSignatureByUserId($dat->user_id); ?>" height="70px"/></br><?php echo getUserNameByUserId($dat->user_id) ?></br>________________________</br><?php echo getDesignationByUserId($dat->user_id) ?></center>
 					</div>
+					<?php } ?>
 					<?php
 					}
 				}

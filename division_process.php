@@ -6,15 +6,17 @@ include 'connection/connect.php';
 	$id="";
 	$company_id="";
 	$division_name="";
+	$division_address="";
 
 	if(isset($_POST['add'])){
 		$id				=	$_POST['id'];
 		$company_id		=	$_POST['company_id'];
 		$division_name	=	$_POST['division_name'];
+		$division_address	=	$_POST['division_address'];
 
 		
 		
-		$query = "INSERT INTO `branch` (`company_id`,`name`) VALUES ('$company_id','$division_name')";
+		$query = "INSERT INTO `branch` (`company_id`,`name`,`division_address`) VALUES ('$company_id','$division_name','$division_address')";
         $conn->query($query);
 		
 		
@@ -46,6 +48,7 @@ include 'connection/connect.php';
 		$id				=	$row['id'];
 		$company_id		=	$row['company_id'];
 		$division_name	=	$row['name'];
+		$division_address	=	$row['division_address'];
 
 		$update=true;
 	}
@@ -54,12 +57,13 @@ include 'connection/connect.php';
 		$id				=	$_POST['id'];
 		$company_id		=	$_POST['company_id'];
 		$division_name	=	$_POST['division_name'];
+		$division_address	=	$_POST['division_address'];
 		
 		 /*
         *  Update Data Into inv_receive Table:
 		*/
 		
-		$query2    = "UPDATE branch SET company_id='$company_id',name='$division_name' WHERE id=$id";
+		$query2    = "UPDATE branch SET company_id='$company_id',name='$division_name',division_address='$division_address' WHERE id=$id";
 		$result2 = $conn->query($query2);
 		
 		
@@ -84,5 +88,6 @@ include 'connection/connect.php';
 		$id				=	$row['id'];
 		$company_id		=	$row['company_id'];
 		$division_name	=	$row['name'];
+		$division_address	=	$row['division_address'];
 	}
 ?>

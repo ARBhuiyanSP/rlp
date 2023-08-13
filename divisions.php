@@ -67,6 +67,10 @@ include ('division_process.php');
                                       <div class="form-group">
                                         <input type="text" name="division_name" value="<?= $division_name; ?>" class="form-control" placeholder="Enter Name" required>
                                       </div></br>
+									  <!--- New Form Suppliers as Vendors--->
+                                      <div class="form-group">
+										<textarea class="form-control" name="division_address" placeholder="Enter Division Address"><?= $division_address; ?></textarea>
+                                      </div></br>
                                       
                                       <!--- New Form Suppliers as Vendors--->
                                       <!--- New Form Suppliers as Vendors--->
