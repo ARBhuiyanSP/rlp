@@ -96,10 +96,10 @@ include ('division_process.php');
                                     <table class="table table-hover" id="example">
                                         <thead>
                                             <tr>
-                                                <th width="10%">SL No</th>
                                                 <th width="25%">Company</th>
                                                 <th width="25%">Division</th>
-                                                <th width="25%">Action</th>
+                                                <th width="35%">Address</th>
+                                                <th width="15%">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -110,7 +110,6 @@ include ('division_process.php');
                                                 foreach ($projectsData as $data) {
                                                     ?>
                                             <tr>
-                                                <td><?php echo $i++; ?></td>
                                                 <td>
                                                 <?php 
                                                 $dataresult =   getDataRowByTableAndId('companies', $data['company_id']);
@@ -118,6 +117,7 @@ include ('division_process.php');
                                                 ?>
                                                 </td>
                                                 <td><?php echo $data['name']; ?></td>
+                                                <td><?php echo $data['division_address']; ?></td>
                                                 <td>
                                                    
                                                     <a href="division_process.php?delete=<?php echo $data['id']; ?>" class="btn btn-danger" onclick="return confirm('Do you want delete this record?');"><i class="fa fa-trash"></i></a>
