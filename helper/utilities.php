@@ -585,6 +585,18 @@ function getDivisionNameById($id){
     }
     return $name;
 }
+
+function getDivisionShortNameById($id){
+    global $conn;
+    $table  =   "branch";
+    $sql = "SELECT * FROM $table WHERE id=$id";
+    $result = $conn->query($sql);
+    $short_name   =   '';
+    if ($result->num_rows > 0) {
+        $short_name   =   $result->fetch_object()->short_name;
+    }
+    return $short_name;
+}
 function getDivisionAddressById($id){
     global $conn;
     $table  =   "branch";
@@ -640,6 +652,17 @@ function getDepartmentNameById($id){
     }
     return $name;
 }
+function getDepartmentShortNameById($id){
+    global $conn;
+    $table  =   "department";
+    $sql = "SELECT * FROM $table WHERE id=$id";
+    $result = $conn->query($sql);
+    $short_name   =   '';
+    if ($result->num_rows > 0) {
+        $short_name   =   $result->fetch_object()->short_name;
+    }
+    return $short_name;
+}
 function getProjectNameById($id){
     global $conn;
     $table  =   "projects";
@@ -674,11 +697,14 @@ function get_table_next_primary_id($table){
     
     $nextRLP    =   $total_row+1;
     $finalRLPNo = sprintf('%0' . $formater_length . 'd', $nextRLP);
-    $div    = replace_dashes(getDivisionNameById($division_id));
-    $divName    = mb_substr($div, 0, 3);
+    //$div    = replace_dashes(getDivisionNameById($division_id));
+    $div    = replace_dashes(getDivisionShortNameById($division_id));
+    $divName    = $div;
     //$depName    = replace_dashes(getDepartmentNameById($department_id));
-    $dep    = replace_dashes(getDepartmentNameById($department_id));
-	$depName    = mb_substr($dep, 0, 3);
+    //$dep    = replace_dashes(getDepartmentNameById($department_id));
+    $dep    = replace_dashes(getDepartmentShortNameById($department_id));
+	//$depName    = mb_substr($dep, 0, 3);
+	$depName    = $dep;
 	
 	//$pro   = replace_dashes(getProjectNameById($project_id));
     //$proName    = strtoupper(mb_substr($pro, 0, 3));

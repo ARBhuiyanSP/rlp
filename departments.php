@@ -55,7 +55,7 @@ include ('department_process.php');
                                                     $selected   = '';
                                                     }
                                                 
-                                            echo '<option value="'.$row['id'].'" '.$selected.'>'.$row['company_name'].'</option>';
+                                            echo '<option value="'.$row['id'].'">'.$row['company_name'].'</option>';
                                             }
                                             }else{
                                             echo '<option value="">Company not available</option>';
@@ -70,6 +70,9 @@ include ('department_process.php');
                                       </div></br>
                                       <div class="form-group">
                                         <input type="text" name="department_name" value="<?= $department_name; ?>" class="form-control" placeholder="Enter Name" required>
+                                      </div></br>
+                                      <div class="form-group">
+                                        <input type="text" name="short_name" value="<?= $short_name; ?>" class="form-control" placeholder="Enter Short Name" required>
                                       </div></br>
                                       
                                       <!--- New Form Suppliers as Vendors--->
@@ -100,6 +103,7 @@ include ('department_process.php');
                                                 <th width="20%">Company</th>
                                                 <th width="20%">Division</th>
                                                 <th width="25%">Department</th>
+                                                <th width="10%">Short Name</th>
                                                 <th width="25%">Action</th>
                                             </tr>
                                         </thead>
@@ -125,6 +129,7 @@ include ('department_process.php');
                                                 ?>
                                                 </td>
                                                 <td><?php echo $data['name']; ?></td>
+                                                <td><?php echo $data['short_name']; ?></td>
                                                 <td>
                                                     
                                                     <a href="department_process.php?delete=<?php echo $data['id']; ?>" class="btn btn-danger" onclick="return confirm('Do you want delete this record?');"><i class="fa fa-trash"></i></a>

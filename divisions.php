@@ -67,6 +67,9 @@ include ('division_process.php');
                                       <div class="form-group">
                                         <input type="text" name="division_name" value="<?= $division_name; ?>" class="form-control" placeholder="Enter Name" required>
                                       </div></br>
+                                      <div class="form-group">
+                                        <input type="text" name="short_name" value="<?= $short_name; ?>" class="form-control" placeholder="Enter Short Name" required>
+                                      </div></br>
 									  <!--- New Form Suppliers as Vendors--->
                                       <div class="form-group">
 										<textarea class="form-control" name="division_address" placeholder="Enter Division Address"><?= $division_address; ?></textarea>
@@ -97,8 +100,9 @@ include ('division_process.php');
                                         <thead>
                                             <tr>
                                                 <th width="25%">Company</th>
-                                                <th width="25%">Division</th>
-                                                <th width="35%">Address</th>
+                                                <th width="20%">Division</th>
+                                                <th width="10%">Short Name</th>
+                                                <th width="30%">Address</th>
                                                 <th width="15%">Action</th>
                                             </tr>
                                         </thead>
@@ -117,6 +121,7 @@ include ('division_process.php');
                                                 ?>
                                                 </td>
                                                 <td><?php echo $data['name']; ?></td>
+                                                <td><?php echo $data['short_name']; ?></td>
                                                 <td><?php echo $data['division_address']; ?></td>
                                                 <td>
                                                    
