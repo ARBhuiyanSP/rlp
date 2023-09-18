@@ -34,6 +34,8 @@
                     include 'partial/dashboard_dh.php';
                 }elseif($_SESSION['logged']['role_name']    ==  "ab"){
                     include 'partial/dashboard_ab.php';
+                }else{
+                    include 'partial/dashboard_member.php';
                 }
             ?>
             <!-- ./col -->
