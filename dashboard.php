@@ -47,7 +47,7 @@
 			}elseif($_SESSION['logged']['role_name']    ==  "dh"){
 				//include 'partial/equipment_list.php';
 			}elseif($_SESSION['logged']['role_name']    ==  "ab"){
-//include 'partial/equipment_list.php';
+		//include 'partial/equipment_list.php';
 		}}else{ ?>
             
 			<div class="row">

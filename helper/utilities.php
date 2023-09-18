@@ -334,6 +334,26 @@ function getDataRowByTable($table){
     }
     return "0";
 }
+function getDataRowByTableByStatus($table,$status){
+    global $conn;
+    $sql = "SELECT * FROM $table WHERE `rlp_status`='$status'";
+    $result = $conn->query($sql);
+    $name   =   '';
+    if ($result->num_rows > 0) {
+        return $result->num_rows;
+    }
+    return "0";
+}
+function getDataRowByTableByPending($table){
+    global $conn;
+    $sql = "SELECT * FROM $table WHERE `rlp_status`!=1";
+    $result = $conn->query($sql);
+    $name   =   '';
+    if ($result->num_rows > 0) {
+        return $result->num_rows;
+    }
+    return "0";
+}
 function getAssignmentTotalRows($import_id){
     global $conn;
     $sql = "SELECT * FROM delivery_assignment_details where sms_status=1 and import_id=".$import_id;
