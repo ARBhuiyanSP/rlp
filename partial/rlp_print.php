@@ -98,7 +98,7 @@
 					$column = 'ack_request_date';
 					$allRemarksHistory = getTableDataByTableName($table, $order, $column);
 						if (isset($allRemarksHistory) && !empty($allRemarksHistory)) {
-						foreach ($allRemarksHistory as $dat) {
+						foreach ($allRemarksHistory as $dat) { 
 					?>
 					
 					<?php //echo (isset($dat->ack_updated_date) && !empty($dat->ack_updated_date) ? human_format_date($dat->ack_updated_date) : ""); ?>
