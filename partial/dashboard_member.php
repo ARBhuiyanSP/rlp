@@ -25,7 +25,7 @@
         <div class="inner">
             <a href="javascript:void(0)" class="small-box-footer">
                 <?php 
-                    $table    =   "rlp_info";
+                    $table = "rlp_info";
                 ?>
                 <h3 style="color: white;"><?php echo getDataRowByTableByPending($table); ?></h3>
                 <p style="color: white;">Pending RLP</p>

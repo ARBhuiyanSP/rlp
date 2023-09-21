@@ -1,3 +1,63 @@
+
+	<script type="text/javascript">
+        $(document).ready(function(){
+
+            $(document).on('keydown', '.employeeid', function() {
+                
+                var id = this.id;
+                var splitid = id.split('_');
+                var index = splitid[1];
+
+                $( '#'+id ).autocomplete({
+                    source: function( request, response ) {
+                        $.ajax({
+                            url: "getEmpDetails.php",
+                            type: 'post',
+                            dataType: "json",
+                            data: {
+                                search: request.term,request:1
+                            },
+                            success: function( data ) {
+                                response( data );
+                            }
+                        });
+                    },
+                    select: function (event, ui) {
+                        $(this).val(ui.item.label); // display the selected text
+                        var userid = ui.item.value; // selected id to input
+
+                        // AJAX
+                        $.ajax({
+                            url: 'getEmpDetails.php',
+                            type: 'post',
+                            data: {userid:userid,request:2},
+                            dataType: 'json',
+                            success:function(response){
+                                
+                                var len = response.length;
+
+                                if(len > 0){
+                                    var id = response[0]['id'];
+                                    var name = response[0]['name'];
+                                    var designation = response[0]['designation'];
+                                    var department = response[0]['department'];
+                                    var division = response[0]['division'];
+                                    var group = response[0]['group'];
+
+                                    document.getElementById('name_'+index).value = name;
+                                    document.getElementById('designation_'+index).value = designation;
+                                    document.getElementById('department_'+index).value = department;
+                                    document.getElementById('division_'+index).value = division;
+                                    document.getElementById('group_'+index).value = group;
+                                }  
+                            }
+                        });
+                        return false;
+                    }
+                });
+            });
+        });
+    </script>
 <?php
     $currentUserId  =   $_SESSION['logged']['user_id'];
     if(!empty($_SESSION['logged']['branch_id']) && !empty($_SESSION['logged']['department_id'])){
@@ -84,6 +144,47 @@
                             </div>
                         </div>
 					</div>
+					<div class="row">
+						            	<!--------------Employee-------------->
+						
+						<div class="col-md-2">
+                            <div class="form-group">
+                                <label class="field_title">Employee ID<span class="reqr"> is required***</span></label>
+								<input type='text' name="office_id" class='form-control employeeid' id='employeeid_1' placeholder='Enter employee id No' required >
+                            </div>
+                        </div>
+						<div class="col-md-2">
+                            <div class="form-group">
+                                <label class="field_title">Division</label>
+                                <input type='text' name="" class='form-control division' id='division_1' readonly >
+                            </div>
+                        </div>
+						<div class="col-md-2">
+                            <div class="form-group">
+                                <label class="field_title">Department</label>
+                                <input type='text' name="" class='form-control department' id='department_1' readonly >
+                            </div>
+                        </div>
+						<div class="col-md-2">
+                            <div class="form-group">
+                                <label class="field_title">Designation</label>
+                                <input type='text' name="" class='form-control designation' id='designation_1' readonly >
+                            </div>
+                        </div>
+						<div class="col-md-2">
+							<div class="form-group">
+								<label class="field_title">Group</label>
+								<input type='text' name="" class='form-control group' id='group_1' readonly >
+							</div>
+						</div>
+						<div class="col-md-2">
+                            <div class="form-group">
+                                <label class="field_title">Employee Name</label>
+                                <input type='text' name="name" class='form-control name' id='name_1' readonly >
+                            </div>
+                        </div>
+						<!--------------Employee-------------->
+					</div>
 					<div class="row" id="div1" style="">
 						<div class="col-md-3">
                             <div class="form-group">
@@ -136,7 +237,6 @@
                         </div>
 					</div>
 					<div class="row" id="div1" style="">
-						
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Assets Name</label>
