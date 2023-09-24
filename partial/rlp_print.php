@@ -76,7 +76,7 @@
                         <td><?php echo $data->purpose; ?></td>
                         <td><?php echo $data->quantity; ?></td>
                         <td><?php echo $data->unit_price; ?></td>
-                        <td><?php echo $data->amount; ?></td>
+                        <td><?php echo $data->quantity * $data->unit_price; ?></td>
                     </tr>
                         <?php } ?>
 					<tr>
