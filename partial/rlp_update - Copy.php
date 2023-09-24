@@ -51,15 +51,13 @@
                             <th>#</th>
                             <th>Item Description</th>
                             <th>Purpose of Purchase</th>
-							<?php if(is_super_admin($currentUserId)){ ?> 
                             <th>Quantity</th>
+							<?php if(is_super_admin($currentUserId)){ ?>
                             <th>Unit Price</th>
                             <th width="15%">Supplier</th>
                             <th>Remarks</th>
-							<?php } else { ?>
-                            <th>Quantity</th>
-                            <th>Unit Price</th>
-                            <?php } ?>
+                            <th></th>
+							<?php } ?>
                         </tr>
                     </thead>
                     <tbody id="tbl_posts_body">
@@ -72,28 +70,20 @@
                             <td><?php echo $sl++; ?></td>
                             <td><?php echo $data->item_des; ?></td>
                             <td><?php echo $data->purpose; ?></td>
-                       
+                            <td><?php echo $data->quantity; ?></td>
+                            <!-- <td><?php //echo $data->unit_price; ?></td> -->
                             
                             <?php if(is_super_admin($currentUserId)){ ?>
-							
-                            <td><input type="text" class="form-control" name="quantity[<?php echo $data->id; ?>]" value="<?php echo (isset($data->quantity) && !empty($data->quantity) ? $data->quantity : ""); ?>"></td>
-
-                            <td><input type="text" class="form-control" name="unit_price[<?php echo $data->id; ?>]" value="<?php echo (isset($data->unit_price) && !empty($data->unit_price) ? $data->unit_price : ""); ?>"></td>
-
+							<td><input type="text" class="form-control" name="unit_price[<?php echo $data->id; ?>]" value="<?php echo (isset($data->supplier) && !empty($data->unit_price) ? $data->unit_price : ""); ?>"></td>
                             <td>
                                 <div class="form-group">
-                                    
-
-                                    <select class="form-control select2" name="supplier[<?php echo $data->id; ?>]">
-                                        <?php
-                                           if(isset($data->supplier) && !empty($data->unit_price)){;
-                                         ?>
-                                         <option value="<?php echo (isset($data->supplier) && !empty($data->supplier) ? $data->supplier : ""); ?>"><?php echo (isset($data->supplier) && !empty($data->supplier) ? $data->supplier : ""); ?></option>
-                                        <?php } ?>
-                                        
-                                        <option value="AST">AST</option>
-                                        <option value="GP">GP</option>
-                                    </select>
+                                    <!--<input type="text" class="form-control" name="supplier[<?php //echo $data->id; ?>]" value="<?php //echo (isset($data->supplier) && !empty($data->supplier) ? $data->supplier : ""); ?>">-->
+									
+									<select class="form-control select2" name="supplier[<?php echo $data->id; ?>]">
+										<option value="">Select Vendor</option>
+										<option value="AST">AST</option>
+										<option value="GP">GP</option>
+									</select>
                                 </div>
                             </td>
                             <td>
@@ -101,10 +91,9 @@
                                     <input type="text" class="form-control" name="details_remarks[<?php echo $data->id; ?>]" value="<?php echo (isset($data->details_remarks) && !empty($data->details_remarks) ? $data->details_remarks : ""); ?>">
                                 </div>
                             </td>
+							<td><a class="btn btn-xs delete-record" data-id="<?php echo $dataid++; ?>"><i class="glyphicon glyphicon-trash"></i></a></td>
                             <?php }else{ ?>
-                            <td><?php echo (isset($data->quantity) && !empty($data->quantity) ? $data->quantity : ""); ?></td>
-
-                            <td><?php echo (isset($data->unit_price) && !empty($data->unit_price) ? $data->unit_price : ""); ?></td>
+                            
                             <?php } ?>
                         </tr>                        
                             <?php } ?>
@@ -119,7 +108,6 @@
 				 <?php if(is_super_admin($currentUserId)){ ?>
                         <tr>
                             <td colspan="6">
-                                <input type="hidden" value="<?php echo $_GET['rlp_id']; ?>" name="rid">
                                 <button type="button" class="btn btn-primary btn-block" onclick="execute_rlp_supplier_update_form('rlp_product_supplier_assign_form');">Update RLP</button>
                             </td>
 							<!---<td>

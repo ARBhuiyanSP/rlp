@@ -55,7 +55,7 @@ include ('department_process.php');
                                                     $selected   = '';
                                                     }
                                                 
-                                            echo '<option value="'.$row['id'].'">'.$row['company_name'].'</option>';
+                                            echo '<option value="'.$row['id'].'" '.$selected.'>'.$row['company_name'].'</option>';
                                             }
                                             }else{
                                             echo '<option value="">Company not available</option>';

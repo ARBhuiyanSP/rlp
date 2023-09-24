@@ -106,24 +106,69 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == "rlp_sa_supplier_upd
     include '../connection/connect.php';
     include '../helper/utilities.php';
     update_supplier_details();
+    update_supplier_name();
+    update_qty();
+    update_price();
     $feedback   =   [
         'status'  => "success",
         'message' => "Supplier have been successfully updated",
     ];
     echo json_encode($feedback);
 }
+
+function update_qty(){
+    global $conn;
+    /*
+     * *****************************rlp_details table operation********************
+     */
+    
+
+    foreach($_POST['quantity'] as $datKey=>$sValue){
+        $dataParam['quantity']  =   (isset($sValue) && !empty($sValue) ? trim(mysqli_real_escape_string($conn, $sValue)) : '');;
+        $where      =   [
+            'id'    =>  $datKey
+        ];
+        updateData('rlp_details', $dataParam, $where);
+    }  
+}
+
+function update_price(){
+    global $conn;
+    /*
+     * *****************************rlp_details table operation********************
+     */
+    
+
+    foreach($_POST['unit_price'] as $datKey=>$sValue){
+        $dataParam['unit_price']  =   (isset($sValue) && !empty($sValue) ? trim(mysqli_real_escape_string($conn, $sValue)) : '');;
+        $where      =   [
+            'id'    =>  $datKey
+        ];
+        updateData('rlp_details', $dataParam, $where);
+    }  
+}
+function update_supplier_name(){
+    global $conn;
+    /*
+     * *****************************rlp_details table operation********************
+     */
+    
+
+    foreach($_POST['supplier'] as $datKey=>$sValue){
+        $dataParam['supplier']  =   (isset($sValue) && !empty($sValue) ? trim(mysqli_real_escape_string($conn, $sValue)) : '');;
+        $where      =   [
+            'id'    =>  $datKey
+        ];
+        updateData('rlp_details', $dataParam, $where);
+    }  
+}
+
 function update_supplier_details(){
     global $conn;
     /*
      * *****************************rlp_details table operation********************
      */
-    foreach($_POST['supplier'] as $datKey=>$datValue){
-        $dataParam['supplier']  =   (isset($datValue) && !empty($datValue) ? trim(mysqli_real_escape_string($conn, $datValue)) : '');;
-        $where      =   [
-            'id'    =>  $datKey
-        ];
-        updateData('rlp_details', $dataParam, $where);
-    }        
+
     foreach($_POST['details_remarks'] as $datKey=>$datValue){
         $dataParam['details_remarks']  =   (isset($datValue) && !empty($datValue) ? trim(mysqli_real_escape_string($conn, $datValue)) : '');;
         $where      =   [
