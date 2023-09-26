@@ -39,6 +39,10 @@ $user_type = $_SESSION['logged']['type'];
                 echo "active";
             } ?>"><a href="companies.php"><i class="fa fa-user-circle"></i> <span>Organization</span></a></li>
 			
+			<li class="<?php if ($page_name == "vendors.php") {
+                echo "active";
+            } ?>"><a href="vendors.php"><i class="fa fa-user-circle"></i> <span>Vendor</span></a></li>
+			
 			<li class="<?php if ($page_name == "role-list.php") {
                 echo "active";
             } ?>"><a href="role-list.php"><i class="fa fa-user-circle"></i> <span>Role Access</span></a></li>

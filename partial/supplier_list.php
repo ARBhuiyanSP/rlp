@@ -7,7 +7,7 @@ $agencyData = getTableDataByTableName($table, $order, $column, $dataType);
 if (isset($agencyData) && !empty($agencyData)) {
     ?>
     <div class="table-responsive">
-        <table id="rlp_list_table" class="table table-bordered table-striped list-table-custom-style">
+        <table id="example" class="table table-bordered table-striped list-table-custom-style">
             <thead>
                 <tr>
                     <th>Supplier ID</th>

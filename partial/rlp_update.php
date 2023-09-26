@@ -91,14 +91,24 @@
                                     
 
                                     <select class="form-control select2" name="supplier[<?php echo $data->id; ?>]">
-                                        <?php
-                                           if(isset($data->supplier) && !empty($data->unit_price)){;
-                                         ?>
-                                         <option value="<?php echo (isset($data->supplier) && !empty($data->supplier) ? $data->supplier : ""); ?>"><?php echo (isset($data->supplier) && !empty($data->supplier) ? $data->supplier : ""); ?></option>
-                                        <?php } ?>
-                                        
-                                        <option value="AST">Archive Solution</option>
-                                        <option value="GP">GProjukti</option>
+										<?php
+                                            $company_id = $data->supplier;
+											$query = "SELECT * FROM vendors";
+                                            $result = $conn->query($query);
+                                            if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                if($company_id == $row['id']){
+                                                    $selected   = 'selected';
+                                                    }else{
+                                                    $selected   = '';
+                                                    }
+                                                
+                                            echo '<option value="'.$row['id'].'" '.$selected.'>'.$row['vendor_name'].'</option>';
+                                            }
+                                            }else{
+                                            echo '<option value="">Vendor not available</option>';
+                                            }
+                                           ?>
                                     </select>
                                 </div>
                             </td>
