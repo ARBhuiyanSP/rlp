@@ -100,7 +100,7 @@ $user_type = $_SESSION['logged']['type'];
 			
 				
 				
-				<?php if(check_permission('notesheet-list')){ ?>		
+				<!-- <?php if(check_permission('notesheet-list')){ ?>		
 				<li class="<?php if ($page_name == "notesheets_list.php") {
                 echo "active";
             } ?>">
@@ -113,7 +113,7 @@ $user_type = $_SESSION['logged']['type'];
             } ?>">
                     <a href="workorders_list.php"><i class="fa fa-file-text-o"></i> <span>Workorders</span></a>
                 </li>
-				<?php } ?>
+				<?php } ?> -->
 				
 			
 

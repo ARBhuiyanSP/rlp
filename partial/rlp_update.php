@@ -160,7 +160,11 @@
                     </tbody>
                 </table>
 				<table class="table table-striped table-bordered">
-				 <?php if(is_super_admin($currentUserId)){ ?>
+				 <?php 
+					if(is_super_admin($currentUserId)){ 
+					if($rlp_info->rlp_status != 1){ 
+						
+				 ?>
                         <tr>
                             <td colspan="6">
                                 <input type="hidden" value="<?php echo $_GET['rlp_id']; ?>" name="rid">
@@ -170,7 +174,7 @@
                                 <a class="btn btn-primary pull-right add-record" data-added="0"><i class="glyphicon glyphicon-plus"></i> Add Another Item</a>
                             </td> --->
                         </tr>
-                        <?php } ?>
+					<?php }} ?>
 				</table>
             </div>
             <!-- /.col -->
