@@ -142,7 +142,7 @@
                         </tr>
                         <?php }?>
 						<tr>
-							<td colspan="5" align="right">Sub Total:</td>
+							<td colspan="5" align="right">Grand Total:</td>
 							<td align="" width="10%">
 								<input type="text" class="form-control multTotal" name="" value="<?php echo $subtotal; ?>" id="grandTotal">
 							</td>

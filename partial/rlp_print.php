@@ -82,7 +82,7 @@
                     </tr>
                         <?php } ?>
                     <tr>
-                        <td colspan="5" style="text-align:right">Sub Total : </td>
+                        <td colspan="5" style="text-align:right">Grand Total : </td>
                         <td><?php echo $subtotal; ?></td>
                     </tr>
 					<tr>
