@@ -54,11 +54,13 @@
 							<?php if(is_super_admin($currentUserId)){ ?> 
                             <th>Quantity</th>
                             <th>Unit Price</th>
+                            <th>Amount</th>
                             <th width="15%">Supplier</th>
                             <th>Remarks</th>
 							<?php } else { ?>
                             <th>Quantity</th>
                             <th>Unit Price</th>
+                            <th>Amount</th>
                             <?php } ?>
                         </tr>
                     </thead>
@@ -66,9 +68,11 @@
                         <?php
                         $sl =   1;
                         $dataid =   1;
+                        $subtotal = 0;
                             foreach($rlp_details as $data){
+                                $subtotal += $data->amount;
                         ?>
-                        <tr id="rec-1">
+                        <tr class="txtMult">
                             <td><?php echo $sl++; ?></td>
                             <td><?php echo $data->item_des; ?></td>
                             <td><?php echo $data->purpose; ?></td>
@@ -76,9 +80,11 @@
                             
                             <?php if(is_super_admin($currentUserId)){ ?>
 							
-                            <td><input type="text" class="form-control" name="quantity[<?php echo $data->id; ?>]" value="<?php echo (isset($data->quantity) && !empty($data->quantity) ? $data->quantity : ""); ?>"></td>
+                            <td><input type="text" class="form-control val1" name="quantity[<?php echo $data->id; ?>]" value="<?php echo (isset($data->quantity) && !empty($data->quantity) ? $data->quantity : ""); ?>"></td>
 
-                            <td><input type="text" class="form-control" name="unit_price[<?php echo $data->id; ?>]" value="<?php echo (isset($data->unit_price) && !empty($data->unit_price) ? $data->unit_price : ""); ?>"></td>
+                            <td><input type="text" class="form-control val2" name="unit_price[<?php echo $data->id; ?>]" value="<?php echo (isset($data->unit_price) && !empty($data->unit_price) ? $data->unit_price : ""); ?>"></td>
+							
+                            <td><input type="text" class="form-control multTotal" name="amount[<?php echo $data->id; ?>]" value="<?php echo (isset($data->amount) && !empty($data->amount) ? $data->amount : ""); ?>"></td>
 
                             <td>
                                 <div class="form-group">
@@ -91,8 +97,8 @@
                                          <option value="<?php echo (isset($data->supplier) && !empty($data->supplier) ? $data->supplier : ""); ?>"><?php echo (isset($data->supplier) && !empty($data->supplier) ? $data->supplier : ""); ?></option>
                                         <?php } ?>
                                         
-                                        <option value="AST">AST</option>
-                                        <option value="GP">GP</option>
+                                        <option value="AST">Archive Solution</option>
+                                        <option value="GP">GProjukti</option>
                                     </select>
                                 </div>
                             </td>
@@ -101,10 +107,32 @@
                                     <input type="text" class="form-control" name="details_remarks[<?php echo $data->id; ?>]" value="<?php echo (isset($data->details_remarks) && !empty($data->details_remarks) ? $data->details_remarks : ""); ?>">
                                 </div>
                             </td>
+							<script>
+								 $(document).ready(function () {
+								   $(".txtMult input").keyup(multInputs);
+
+								   function multInputs() {
+									   var mult = 0;
+									   // for each row:
+									   $("tr.txtMult").each(function () {
+										   // get the values from this row:
+										   var $val1 = $('.val1', this).val();
+										   var $val2 = $('.val2', this).val();
+										   var $total = ($val1 * 1) * ($val2 * 1);
+										   // set total for the row
+										   $('.multTotal', this).val($total);
+										   mult += $total;
+									   });
+									   $("#grandTotal").val(mult);
+								   }
+							  });
+							</script>
+							
                             <?php }else{ ?>
                             <td><?php echo (isset($data->quantity) && !empty($data->quantity) ? $data->quantity : ""); ?></td>
 
                             <td><?php echo (isset($data->unit_price) && !empty($data->unit_price) ? $data->unit_price : ""); ?></td>
+                            <td><?php echo (isset($data->amount) && !empty($data->amount) ? $data->amount : ""); ?></td>
                             <?php } ?>
                         </tr>                        
                             <?php } ?>
@@ -113,6 +141,12 @@
                             
                         </tr>
                         <?php }?>
+						<tr>
+							<td colspan="5" align="right">Sub Total:</td>
+							<td align="" width="10%">
+								<input type="text" class="form-control multTotal" name="" value="<?php echo $subtotal; ?>" id="grandTotal">
+							</td>
+						</tr>
                     </tbody>
                 </table>
 				<table class="table table-striped table-bordered">

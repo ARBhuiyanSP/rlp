@@ -68,7 +68,9 @@
                 <tbody>
                     <?php
                     $sl =   1;
+                    $subtotal = 0;
                         foreach($rlp_details as $data){
+                            $subtotal += $data->amount;
                     ?>
                     <tr>
                         <td><?php echo $sl++; ?></td>
@@ -76,9 +78,13 @@
                         <td><?php echo $data->purpose; ?></td>
                         <td><?php echo $data->quantity; ?></td>
                         <td><?php echo $data->unit_price; ?></td>
-                        <td><?php echo $data->quantity * $data->unit_price; ?></td>
+                        <td><?php echo $data->amount; ?></td>
                     </tr>
                         <?php } ?>
+                    <tr>
+                        <td colspan="5" style="text-align:right">Sub Total : </td>
+                        <td><?php echo $subtotal; ?></td>
+                    </tr>
 					<tr>
                         <td colspan="6"><?php echo $rlp_info->user_remarks; ?></td>
                     </tr>

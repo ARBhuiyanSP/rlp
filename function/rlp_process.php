@@ -109,6 +109,7 @@ if(isset($_GET['process_type']) && $_GET['process_type'] == "rlp_sa_supplier_upd
     update_supplier_name();
     update_qty();
     update_price();
+    update_amount();
     $feedback   =   [
         'status'  => "success",
         'message' => "Supplier have been successfully updated",
@@ -147,6 +148,25 @@ function update_price(){
         updateData('rlp_details', $dataParam, $where);
     }  
 }
+
+function update_amount(){
+    global $conn;
+    /*
+     * *****************************rlp_details table operation********************
+     */
+    // $qty = $_POST['qty'];
+    // $unit_price = $_POST['unit_price'];
+    // $amount = $qty * $unit_price;
+
+    foreach(($_POST['amount']) as $datKey=>$sValue){
+        $dataParam['amount']  =   (isset($sValue) && !empty($sValue) ? trim(mysqli_real_escape_string($conn, $sValue)) : '');;
+        $where      =   [
+            'id'    =>  $datKey
+        ];
+        updateData('rlp_details', $dataParam, $where);
+    }  
+}
+
 function update_supplier_name(){
     global $conn;
     /*
